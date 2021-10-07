@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         Move(playerInput.moveInput);
 
-        if (playerInput.jump) Jump();
+        //if (playerInput.jump) Jump();
     }
 
     private void Update()
@@ -53,16 +53,19 @@ public class PlayerMovement : MonoBehaviour
         var targetSpeed = speed * moveInput.magnitude;
         var moveDirection = Vector3.Normalize(transform.forward * moveInput.y + transform.right * moveInput.x);
 
-        var smoothTime = characterController.isGrounded ? speedSmoothTime : speedSmoothTime / airControlPercent;
+        //var smoothTime = characterController.isGrounded ? speedSmoothTime : speedSmoothTime / airControlPercent;
+        var smoothTime = speedSmoothTime;
 
         targetSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, smoothTime);
         currentVelocityY += Time.deltaTime * Physics.gravity.y;
 
+        //Debug.Log(targetSpeed);
         var velocity = moveDirection * targetSpeed + Vector3.up * currentVelocityY;
 
         characterController.Move(velocity * Time.deltaTime);
 
-        if (characterController.isGrounded) currentVelocityY = 0;
+        //if (characterController.isGrounded) currentVelocityY = 0;
+        currentVelocityY = 0;
     }
 
     public void Rotate()
@@ -71,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
         transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation,
                                     ref turnSmoothVelocity, turnSmoothTime);
+        //transform.eulerAngles = Vector3.up * targetRotation;
     }
 
     public void Jump()

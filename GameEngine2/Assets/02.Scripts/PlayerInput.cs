@@ -18,7 +18,6 @@ public class PlayerInput : MonoBehaviour
     public bool jump { get; private set; } 
 
 
-    // 매 프레임 사용자 입력을 감지
     private void Update()
     {
         //if (GameManager.Instance != null
