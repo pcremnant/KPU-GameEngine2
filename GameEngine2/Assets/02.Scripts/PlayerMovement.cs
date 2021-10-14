@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     private PlayerInput playerInput;
     //private PlayerShooter playerShooter;
-    //private Animator animator;
+    private Animator animator;
 
     private Camera followCam;
 
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         followCam = Camera.main;
         characterController = GetComponent<CharacterController>();
@@ -50,6 +50,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(Vector2 moveInput)
     {
+        if (currentSpeed > 0.2f)
+            animator.SetBool("isWalk", true);
+        else
+            animator.SetBool("isWalk", false);
+
+        //Debug.Log(moveInput.magnitude);
         var targetSpeed = speed * moveInput.magnitude;
         var moveDirection = Vector3.Normalize(transform.forward * moveInput.y + transform.right * moveInput.x);
 
@@ -57,10 +63,11 @@ public class PlayerMovement : MonoBehaviour
         var smoothTime = speedSmoothTime;
 
         targetSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, smoothTime);
-        currentVelocityY += Time.deltaTime * Physics.gravity.y;
+        //currentVelocityY += Time.deltaTime * Physics.gravity.y;
 
-        //Debug.Log(targetSpeed);
-        var velocity = moveDirection * targetSpeed + Vector3.up * currentVelocityY;
+        //var velocity = moveDirection * targetSpeed + Vector3.up * currentVelocityY;
+        var velocity = moveDirection * targetSpeed;
+
 
         characterController.Move(velocity * Time.deltaTime);
 
