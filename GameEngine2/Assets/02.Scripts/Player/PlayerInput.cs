@@ -15,8 +15,9 @@ public class PlayerInput : MonoBehaviour
     public Vector3 moveInput { get; private set; } 
     public bool fire { get; private set; } 
     public bool reload { get; private set; }
-    public bool jump { get; private set; } 
+    public bool jump { get; private set; }
 
+    public bool isMouseLock = false;
 
     private void Update()
     {
@@ -30,6 +31,17 @@ public class PlayerInput : MonoBehaviour
 
         //    return;
         //}
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            if (!isMouseLock)
+                Cursor.lockState = CursorLockMode.Locked;
+            else
+                Cursor.lockState = CursorLockMode.None;
+
+            isMouseLock = !isMouseLock;
+        }
+
 
         moveInput = new Vector2(Input.GetAxis(moveHorizontalAxisName), Input.GetAxis(moveVerticalAxisName));
 

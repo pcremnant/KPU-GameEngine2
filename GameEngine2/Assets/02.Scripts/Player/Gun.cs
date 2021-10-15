@@ -19,8 +19,8 @@ public class Gun : MonoBehaviour
     //public AudioClip shotClip; // 발사 소리
     //public AudioClip reloadClip; // 재장전 소리
     
-    //public ParticleSystem muzzleFlashEffect; // 총구 화염 효과
-    //public ParticleSystem shellEjectEffect; // 탄피 배출 효과
+    public ParticleSystem muzzleFlashEffect; // 총구 화염 효과
+    public ParticleSystem shellEjectEffect; // 탄피 배출 효과
     
     public Transform fireTransform; // 총알이 발사될 위치
     public Transform leftHandMount;
@@ -54,11 +54,11 @@ public class Gun : MonoBehaviour
         bulletLineRenderer.enabled = false;
     }
 
-    //public void Setup(PlayerShooter gunHolder)
-    //{
-    //    this.gunHolder = gunHolder;
-    //    excludeTarget = gunHolder.excludeTarget;
-    //}
+    public void Setup(PlayerShooter gunHolder)
+    {
+        this.gunHolder = gunHolder;
+        excludeTarget = gunHolder.excludeTarget;
+    }
 
     private void OnEnable()
     {
@@ -78,6 +78,7 @@ public class Gun : MonoBehaviour
         if (state == State.Ready
             && Time.time >= lastFireTime + timeBetFire)
         {
+            Debug.Log("Gun.Fire");
             //var xError = Utility.GetRandomNormalDistribution(0f, currentSpread);
             //var yError = Utility.GetRandomNormalDistribution(0f, currentSpread);
 
@@ -137,17 +138,15 @@ public class Gun : MonoBehaviour
 
         StartCoroutine(ShotEffect(hitPosition));
 
-        // 남은 탄환의 수를 -1
-        magAmmo--;
-        if (magAmmo <= 0)
-            // 탄창에 남은 탄약이 없다면, 총의 현재 상태를 Empty으로 갱신
-            state = State.Empty;
+        //magAmmo--;
+        //if (magAmmo <= 0)
+        //    state = State.Empty;
     }
 
     private IEnumerator ShotEffect(Vector3 hitPosition)
     {
-        //muzzleFlashEffect.Play();
-        //shellEjectEffect.Play();
+        muzzleFlashEffect.Play();
+        shellEjectEffect.Play();
 
         //gunAudioPlayer.PlayOneShot(shotClip);
 
