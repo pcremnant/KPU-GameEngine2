@@ -78,7 +78,7 @@ public class Gun : MonoBehaviour
         if (state == State.Ready
             && Time.time >= lastFireTime + timeBetFire)
         {
-            Debug.Log("Gun.Fire");
+            //Debug.Log("Gun.Fire");
             //var xError = Utility.GetRandomNormalDistribution(0f, currentSpread);
             //var yError = Utility.GetRandomNormalDistribution(0f, currentSpread);
 
