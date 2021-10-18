@@ -12,7 +12,8 @@ public class StageSelectScene : GameScene
     // Start is called before the first frame update
     void Start()
     {
-
+        // object
+        // stage.Add
     }
 
     // Update is called once per frame
