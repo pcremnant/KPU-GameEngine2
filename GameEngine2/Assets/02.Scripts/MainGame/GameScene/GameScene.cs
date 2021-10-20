@@ -3,21 +3,43 @@ using UnityEngine;
 public class GameScene : MonoBehaviour
 {
     protected float _sceneTimer = 0f;
-    // Start is called before the first frame update
 
+    public bool endScene => _endScene;
+    protected bool _endScene = false;
+
+    public bool paused => _paused;
+    protected bool _paused = false;
+
+    public bool initialzied => _initialized;
+    protected bool _initialized = false;
+
+    // æ¿ √ ±‚»≠
     public virtual void Initialize()
     {
+        _paused = false;
+        _endScene = false;
+        _initialized = true;
         _sceneTimer = 0;
     }
 
+    public virtual void SceneUpdate()
+    {
+        _sceneTimer += Time.deltaTime;
+    }
+
+    // º“∏Í¿⁄
     public virtual void DestroyScene()
     {
 
     }
 
-    public virtual void SceneUpdate()
+    public virtual void Pause()
     {
-
+        _paused = true;
     }
 
+    public virtual void Resume()
+    {
+        _paused = true;
+    }
 }

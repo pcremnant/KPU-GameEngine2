@@ -7,26 +7,25 @@ public class MainGame : MonoBehaviour
     public GameState gameState => _gameState;
     private GameState _gameState;
 
-    // 임시 확인용 코드
-    [SerializeField] StageSelectScene selectScene;
+    [SerializeField] public SceneManager SceneManager => SceneManager;
+    private SceneManager sceneManager;
 
-    public GameScene gameScene => _scenes.Peek();
-    private Stack<GameScene> _scenes;
 
     private void Awake()
     {
-
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        _scenes.Push(selectScene);
+        sceneManager = new SceneManager();
+        sceneManager.Initialize(new StageSelectScene());
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        sceneManager.SceneUpdate();
     }
 }

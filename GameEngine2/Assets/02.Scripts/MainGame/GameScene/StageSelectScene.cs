@@ -4,43 +4,13 @@ using UnityEngine;
 
 public class StageSelectScene : GameScene
 {
-    [SerializeField] List<GameObject> stage;
-
-    public int curStage => _curStage;
-    private int _curStage = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // 바뀌는거만 확인하고 나중에 UI 통해서 바꾸기
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            foreach (var s in stage)
-            {
-                s.SetActive(false);
-            }
-            stage[0].SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            foreach (var s in stage)
-            {
-                s.SetActive(false);
-            }
-            stage[1].SetActive(true);
-        }
-    }
+    private Stage[] _stages;
 
     public override void Initialize() 
     {
         base.Initialize();
-
+        var go = GameObject.Find("Map");
+        _stages = go.GetComponentsInChildren<Stage>(true);
     }
 
     public override void DestroyScene()
@@ -49,8 +19,39 @@ public class StageSelectScene : GameScene
 
     }
 
+    public override void Pause()
+    {
+        base.Pause();
+    }
+
+    public override void Resume()
+    {
+        base.Resume();
+    }
+
     public override void SceneUpdate()
     {
         base.SceneUpdate();
+        // 바뀌는거만 확인하고 나중에 UI 통해서 바꾸기
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            foreach (var stage in _stages)
+            {
+                if (stage.stageNumber == 1)
+                    stage.OnStage();
+                else
+                    stage.OffStage();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            foreach (var stage in _stages)
+            {
+                if (stage.stageNumber == 2)
+                    stage.OnStage();
+                else
+                    stage.OffStage();
+            }
+        }
     }
 }
