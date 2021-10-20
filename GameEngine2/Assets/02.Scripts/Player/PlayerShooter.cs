@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ÁÖ¾îÁø Gun ¿ÀºêÁ§Æ®¸¦ ½î°Å³ª ÀçÀåÀü
-// ¾Ë¸ÂÀº ¾Ö´Ï¸ŞÀÌ¼ÇÀ» Àç»ıÇÏ°í IK¸¦ »ç¿ëÇØ Ä³¸¯ÅÍ ¾ç¼ÕÀÌ ÃÑ¿¡ À§Ä¡ÇÏµµ·Ï Á¶Á¤
+// ì£¼ì–´ì§„ Gun ì˜¤ë¸Œì íŠ¸ë¥¼ ì˜ê±°ë‚˜ ì¬ì¥ì „
+// ì•Œë§ì€ ì• ë‹ˆë©”ì´ì…˜ì„ ì¬ìƒí•˜ê³  IKë¥¼ ì‚¬ìš©í•´ ìºë¦­í„° ì–‘ì†ì´ ì´ì— ìœ„ì¹˜í•˜ë„ë¡ ì¡°ì •
 public class PlayerShooter : MonoBehaviour
 {
     public enum AimState
@@ -14,11 +14,11 @@ public class PlayerShooter : MonoBehaviour
 
     public AimState aimState { get; private set; }
 
-    public Gun gun; // »ç¿ëÇÒ ÃÑ
+    public Gun gun; // ì‚¬ìš©í•  ì´
     public LayerMask excludeTarget;
 
     private PlayerInput playerInput;
-    private Animator playerAnimator; // ¾Ö´Ï¸ŞÀÌÅÍ ÄÄÆ÷³ÍÆ®
+    private Animator playerAnimator; // ì• ë‹ˆë©”ì´í„° ì»´í¬ë„ŒíŠ¸
     private Camera playerCamera;
 
     private float waitingTimeForReleasingAim = 2.5f;
@@ -110,7 +110,7 @@ public class PlayerShooter : MonoBehaviour
 
     public void Reload()
     {
-        // ÀçÀåÀü ÀÔ·Â °¨Áö½Ã ÀçÀåÀü
+        // ì¬ì¥ì „ ì…ë ¥ ê°ì§€ì‹œ ì¬ì¥ì „
         //if (gun.Reload()) playerAnimator.SetTrigger("Reload");
     }
 
@@ -135,24 +135,24 @@ public class PlayerShooter : MonoBehaviour
         }
     }
 
-    // Åº¾à UI °»½Å
+    // íƒ„ì•½ UI ê°±ì‹ 
     //private void UpdateUI()
     //{
     //    if (gun == null || UIManager.Instance == null) return;
 
-    //    // UI ¸Å´ÏÀúÀÇ Åº¾à ÅØ½ºÆ®¿¡ ÅºÃ¢ÀÇ Åº¾à°ú ³²Àº ÀüÃ¼ Åº¾àÀ» Ç¥½Ã
+    //    // UI ë§¤ë‹ˆì €ì˜ íƒ„ì•½ í…ìŠ¤íŠ¸ì— íƒ„ì°½ì˜ íƒ„ì•½ê³¼ ë‚¨ì€ ì „ì²´ íƒ„ì•½ì„ í‘œì‹œ
     //    UIManager.Instance.UpdateAmmoText(gun.magAmmo, gun.ammoRemain);
 
     //    UIManager.Instance.SetActiveCrosshair(hasEnoughDistance);
     //    UIManager.Instance.UpdateCrossHairPosition(aimPoint);
     //}
 
-    // ¾Ö´Ï¸ŞÀÌÅÍÀÇ IK °»½Å
+    // ì• ë‹ˆë©”ì´í„°ì˜ IK ê°±ì‹ 
     private void OnAnimatorIK(int layerIndex)
     {
         if (gun == null || gun.state == Gun.State.Reloading) return;
 
-        // IK¸¦ »ç¿ëÇÏ¿© ¿Ş¼ÕÀÇ À§Ä¡¿Í È¸ÀüÀ» ÃÑÀÇ ¿À¸¥ÂÊ ¼ÕÀâÀÌ¿¡ ¸ÂÃá´Ù
+        // IKë¥¼ ì‚¬ìš©í•˜ì—¬ ì™¼ì†ì˜ ìœ„ì¹˜ì™€ íšŒì „ì„ ì´ì˜ ì˜¤ë¥¸ìª½ ì†ì¡ì´ì— ë§ì¶˜ë‹¤
         playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
         playerAnimator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
 
