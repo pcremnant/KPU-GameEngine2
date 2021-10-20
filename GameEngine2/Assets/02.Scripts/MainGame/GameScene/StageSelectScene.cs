@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class StageSelectScene : GameScene
 {
-    Stage[] stages;
-    
-    private int _curStage = 0;
+    private Stage[] _stages;
 
-    // Start is called before the first frame update
-    void Start()
+    public override void Initialize() 
     {
-       stages = FindObjectsOfType<Stage>();
+        base.Initialize();
+        var go = GameObject.Find("Map");
+        _stages = go.GetComponentsInChildren<Stage>(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void DestroyScene()
     {
+        base.DestroyScene();
+
+    }
+
+    public override void Pause()
+    {
+        base.Pause();
+    }
+
+    public override void Resume()
+    {
+        base.Resume();
+    }
+
+    public override void SceneUpdate()
+    {
+        base.SceneUpdate();
         // 바뀌는거만 확인하고 나중에 UI 통해서 바꾸기
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            foreach (var stage in stages)
+            foreach (var stage in _stages)
             {
                 if (stage.stageNumber == 1)
                     stage.OnStage();
@@ -30,7 +45,7 @@ public class StageSelectScene : GameScene
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            foreach (var stage in stages)
+            foreach (var stage in _stages)
             {
                 if (stage.stageNumber == 2)
                     stage.OnStage();
@@ -38,17 +53,5 @@ public class StageSelectScene : GameScene
                     stage.OffStage();
             }
         }
-    }
-
-    public override void Initialize() 
-    {
-        base.Initialize();
-
-    }
-
-    public override void DestroyScene()
-    {
-        base.DestroyScene();
-
     }
 }
