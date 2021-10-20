@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea.GameEngine2.iml
+/contentModel.xml
+# Datasource local storage ignored files
+/../../../../../../../../:\Unity\Project\KPU-GameEngine2\GameEngine2\.idea\.idea.GameEngine2\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
