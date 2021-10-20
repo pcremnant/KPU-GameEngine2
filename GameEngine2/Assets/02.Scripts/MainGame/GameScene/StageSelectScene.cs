@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class StageSelectScene : GameScene
 {
-    [SerializeField] List<GameObject> stage;
-
-    public int curStage => _curStage;
+    Stage[] stages;
+    
     private int _curStage = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        // object
-        // stage.Add
+       stages = FindObjectsOfType<Stage>();
     }
 
     // Update is called once per frame
@@ -22,19 +20,23 @@ public class StageSelectScene : GameScene
         // 바뀌는거만 확인하고 나중에 UI 통해서 바꾸기
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            foreach (var s in stage)
+            foreach (var stage in stages)
             {
-                s.SetActive(false);
+                if (stage.stageNumber == 1)
+                    stage.OnStage();
+                else
+                    stage.OffStage();
             }
-            stage[0].SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            foreach (var s in stage)
+            foreach (var stage in stages)
             {
-                s.SetActive(false);
+                if (stage.stageNumber == 2)
+                    stage.OnStage();
+                else
+                    stage.OffStage();
             }
-            stage[1].SetActive(true);
         }
     }
 
@@ -48,10 +50,5 @@ public class StageSelectScene : GameScene
     {
         base.DestroyScene();
 
-    }
-
-    public override void SceneUpdate()
-    {
-        base.SceneUpdate();
     }
 }
