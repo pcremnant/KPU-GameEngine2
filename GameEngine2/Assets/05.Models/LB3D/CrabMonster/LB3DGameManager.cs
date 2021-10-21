@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LB3DGameManager : MonoBehaviour
-{
-
-    public int hp;
+public class LB3DGameManager : MonoBehaviour {
 
     public Animator animator;
 
@@ -24,7 +21,6 @@ public class LB3DGameManager : MonoBehaviour
     // Use this for initialization
     void Start () {
         originalCamPosition = cam.transform.position;
-        hp = 100;
     }
 	
 	// Update is called once per frame
@@ -38,8 +34,6 @@ public class LB3DGameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Application.Quit();
         }
-        
-        //if(OnDamage)
 
     }
 
