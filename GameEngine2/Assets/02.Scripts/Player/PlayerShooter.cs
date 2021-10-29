@@ -77,8 +77,8 @@ public class PlayerShooter : MonoBehaviour
         if (angle > 270f) angle -= 360f;
 
         angle = angle / 180f * -1f + 0.5f;
-
-        //playerAnimator.SetFloat("Angle", angle);
+        //Debug.Log(angle);
+        playerAnimator.SetFloat("Angle", angle);
 
         if (!playerInput.fire && Time.time >= lastFireInputIime + waitingTimeForReleasingAim)
         {
