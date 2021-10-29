@@ -105,10 +105,11 @@ public class Gun : MonoBehaviour
         // 레이캐스트에 의한 충돌 정보를 저장하는 컨테이너
         RaycastHit hit;
         var hitPosition = Vector3.zero;
-
+        //Debug.DrawRay(startPoint, direction * 30f, Color.red);
         // 레이캐스트(시작지점, 방향, 충돌 정보 컨테이너, 사정거리)
         if (Physics.Raycast(startPoint, direction, out hit, fireDistance, ~excludeTarget))
         {
+            Debug.Log("RaycastHit");
             //var target =
             //    hit.collider.GetComponent<IDamageable>();
 
