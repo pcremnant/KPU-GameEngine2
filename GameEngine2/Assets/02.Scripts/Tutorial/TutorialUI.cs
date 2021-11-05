@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialUI : MonoBehaviour
 {
+    public Transform TextTransform;
+    public Text ScoreText;
     void Start()
     {
-        transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 180, 0);
+        //Transform UITransform = transform.GetChild(0).transform;
+        //UITransform.GetComponent<Text>();
         //transform.rotation = Quaternion.Euler(0, 180, 0);
+        TextTransform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     void Update()
     {
         transform.LookAt(Camera.main.transform);
+    }
+
+    public void SetScoreText(int curScore, int maxScore)
+    {
+        ScoreText.text = curScore.ToString() + " / " + maxScore.ToString();
     }
 }

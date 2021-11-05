@@ -82,7 +82,6 @@ public class Gun : MonoBehaviour
             //var xError = Utility.GetRandomNormalDistribution(0f, currentSpread);
             //var yError = Utility.GetRandomNormalDistribution(0f, currentSpread);
 
-
             var fireDirection = aimTarget - fireTransform.position;
 
             //fireDirection = Quaternion.AngleAxis(yError, Vector3.up) * fireDirection;
@@ -107,30 +106,29 @@ public class Gun : MonoBehaviour
         var hitPosition = Vector3.zero;
         //Debug.DrawRay(startPoint, direction * 30f, Color.red);
         // 레이캐스트(시작지점, 방향, 충돌 정보 컨테이너, 사정거리)
-        if (Physics.Raycast(startPoint, direction, out hit, fireDistance, ~excludeTarget))
+        if (Physics.Raycast(startPoint, direction, out hit, fireDistance/*, ~excludeTarget*/))
         {
-            Debug.Log("RaycastHit");
-            //var target =
-            //    hit.collider.GetComponent<IDamageable>();
+            //Debug.Log("RaycastHit");
+            var target = hit.collider.GetComponent<IDamageable>();
 
-            //if (target != null)
-            //{
-            //    DamageMessage damageMessage;
+            if (target != null)
+            {
+                DamageMessage damageMessage;
 
-            //    damageMessage.damager = gunHolder.gameObject;
-            //    damageMessage.amount = damage;
-            //    damageMessage.hitPoint = hit.point;
-            //    damageMessage.hitNormal = hit.normal;
+                damageMessage.damager = gunHolder.gameObject;
+                damageMessage.amount = damage;
+                damageMessage.hitPoint = hit.point;
+                damageMessage.hitNormal = hit.normal;
 
-            //    // 상대방의 OnDamage 함수를 실행시켜서 상대방에게 데미지 주기
-            //    target.ApplyDamage(damageMessage);
-            //}
+                // 상대방의 OnDamage 함수를 실행시켜서 상대방에게 데미지 주기
+                target.ApplyDamage(damageMessage);
+            }
             //else
             //{
             //    EffectManager.Instance.PlayHitEffect(hit.point, hit.normal, hit.transform);
             //}
 
-            //hitPosition = hit.point;
+            hitPosition = hit.point;
         }
         else
         {

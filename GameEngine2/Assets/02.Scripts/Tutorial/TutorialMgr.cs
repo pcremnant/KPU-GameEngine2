@@ -6,29 +6,40 @@ public class TutorialMgr : MonoBehaviour
 {
     public Transform[] sphereTransforms;
     public Transform centerTransform;
-    public Transform playerTransform;
+    public TutorialUI tutorialUI;
     public float width;
     public float height;
+    public int maxScore;
+    public int curScore;
+
+    float halfWidth;
+    float halfHeight;
 
     void Start()
     {
-        //Vector3 vCenterToPlayer = (centerTransform.position - playerTransform.position).normalized;
-        //Vector3 vUp = new Vector3(0, 1, 0);
-
-
-        float halfWidth = width * 0.4f;
-        float halfHeight = height* 0.4f;
+        halfWidth = width * 0.4f;
+        halfHeight = height* 0.4f;
 
         for (int i = 0; i < sphereTransforms.Length; ++i)
         {
-            Vector3 vRandomRight = centerTransform.right * Random.RandomRange(-halfWidth, halfWidth);
-            Vector3 vRandomUp = new Vector3(0,1,0) * Random.RandomRange(-halfHeight, halfHeight);
-            sphereTransforms[i].position += (vRandomRight + vRandomUp);
+            RandomSetPosSphere(i);
         }
+
+        tutorialUI.SetScoreText(curScore, maxScore);
     }
 
-    void Update()
+    void RandomSetPosSphere(int Index)
     {
-        
+        Vector3 vRandomRight = centerTransform.right * Random.RandomRange(-halfWidth, halfWidth);
+        Vector3 vRandomUp = new Vector3(0, 1, 0) * Random.RandomRange(-halfHeight, halfHeight);
+        sphereTransforms[Index].position = centerTransform.position + (vRandomRight + vRandomUp);
+    }
+
+
+    public void HitSphere(int Index)
+    {
+        RandomSetPosSphere(Index);
+
+        tutorialUI.SetScoreText(++curScore, maxScore);
     }
 }
