@@ -137,9 +137,9 @@ public class Gun : MonoBehaviour
 
         StartCoroutine(ShotEffect(hitPosition));
 
-        //magAmmo--;
-        //if (magAmmo <= 0)
-        //    state = State.Empty;
+        magAmmo--;
+        if (magAmmo <= 0)
+            state = State.Empty;
     }
 
     private IEnumerator ShotEffect(Vector3 hitPosition)
@@ -165,7 +165,6 @@ public class Gun : MonoBehaviour
             // 이미 재장전 중이거나, 남은 총알이 없거나
             // 탄창에 총알이 이미 가득한 경우 재장전 할수 없다
             return false;
-
         StartCoroutine(ReloadRoutine());
         return true;
     }

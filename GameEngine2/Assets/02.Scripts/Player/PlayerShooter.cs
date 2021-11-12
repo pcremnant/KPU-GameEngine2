@@ -67,6 +67,10 @@ public class PlayerShooter : MonoBehaviour
         {
             Reload();
         }
+        else if (playerInput.throwG)
+        {
+            ThrowGrenade();
+        }
     }
 
     private void Update()
@@ -111,7 +115,17 @@ public class PlayerShooter : MonoBehaviour
     public void Reload()
     {
         // 재장전 입력 감지시 재장전
-        //if (gun.Reload()) playerAnimator.SetTrigger("Reload");
+        if (gun.Reload()) playerAnimator.SetTrigger("Reload");
+    }
+
+    public void ThrowGrenade()
+    {
+        Debug.Log("throwInput");
+        if (gun.state != Gun.State.Reloading)
+        {
+            Debug.Log("throw");
+            playerAnimator.SetTrigger("Throw");
+        }
     }
 
     private void UpdateAimTarget()
