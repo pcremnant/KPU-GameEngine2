@@ -2,48 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager
+namespace PC
 {
-    private Stack<GameScene> scenes;
-
-    public void Initialize(GameScene initScene)
+    public class SceneManager
     {
-        scenes = new Stack<GameScene>();
-        scenes.Push(initScene);
-        if (!initScene.initialzied)
-            initScene.Initialize();
-    }
+        private Stack<GameScene> scenes;
 
-    public void Push(GameScene newScene)
-    {
-        if (scenes.Count > 0)
-            scenes.Peek().Pause();
-        scenes.Push(newScene);
-        if (!newScene.initialzied)
-            newScene.Initialize();
-    }
+        public void Initialize(GameScene initScene)
+        {
+            scenes = new Stack<GameScene>();
+            scenes.Push(initScene);
+            if (!initScene.initialzied)
+                initScene.Initialize();
+        }
 
-    public bool Pop()
-    {
-        if (scenes.Count <= 1)
-            return false;
+        public void Push(GameScene newScene)
+        {
+            if (scenes.Count > 0)
+                scenes.Peek().Pause();
+            scenes.Push(newScene);
+            if (!newScene.initialzied)
+                newScene.Initialize();
+        }
 
-        var scene = scenes.Pop();
-        scene.DestroyScene();
-        
-        scenes.Peek().Resume();
-        return true;
-    }
+        public bool Pop()
+        {
+            if (scenes.Count <= 1)
+                return false;
 
-    public void SceneUpdate()
-    {
-        var scene = scenes.Peek();
-        if (scene.initialzied)
-            scene.SceneUpdate();
-    }
+            var scene = scenes.Pop();
+            scene.DestroyScene();
 
-    public Scene GetCurrentScene()
-    {
-        return scenes.Peek().MyScene;
+            scenes.Peek().Resume();
+            return true;
+        }
+
+        public void SceneUpdate()
+        {
+            var scene = scenes.Peek();
+            if (scene.initialzied)
+                scene.SceneUpdate();
+        }
+
+        public Scene GetCurrentScene()
+        {
+            return scenes.Peek().MyScene;
+        }
     }
 }

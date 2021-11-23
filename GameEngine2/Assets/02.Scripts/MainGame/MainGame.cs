@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class MainGame : MonoBehaviour
 {
-    public GameState gameState => _gameState;
-    private GameState _gameState;
-
-    private SceneManager sceneManager;
+    private PC.SceneManager sceneManager;
 
     [SerializeField]
     public List<GameScene> gameScenes;
@@ -52,10 +49,29 @@ public class MainGame : MonoBehaviour
         sceneManager.Push(GetScene(Scene.Playing));
     }
 
+    public void OnShopButton()
+    {
+        sceneManager.Push(GetScene(Scene.Shop));
+    }
+
     public void OnResumeButton()
     {
         Scene scene = sceneManager.GetCurrentScene();
         while (scene != Scene.Playing)
+        {
+            if (sceneManager.Pop())
+            {
+                scene = sceneManager.GetCurrentScene();
+                continue;
+            }
+            break;
+        }
+    }
+
+    public void OnStageSelectBackButton()
+    {
+        Scene scene = sceneManager.GetCurrentScene();
+        while (scene != Scene.Main)
         {
             if (sceneManager.Pop())
             {
@@ -80,6 +96,20 @@ public class MainGame : MonoBehaviour
         }
     }
 
+    public void OnShopBackButton()
+    {
+        Scene scene = sceneManager.GetCurrentScene();
+        while (scene != Scene.Main)
+        {
+            if (sceneManager.Pop())
+            {
+                scene = sceneManager.GetCurrentScene();
+                continue;
+            }
+            break;
+        }
+    }
+
     GameScene GetScene(Scene sceneIndex)
     {
         switch (sceneIndex)
@@ -92,6 +122,8 @@ public class MainGame : MonoBehaviour
                 return gameScenes[2];
             case Scene.Pause:
                 return gameScenes[3];
+            case Scene.Shop:
+                return gameScenes[4];
             default:
                 return null;
         }
@@ -106,7 +138,7 @@ public class MainGame : MonoBehaviour
 
         }
         moneyText.text = _money.ToString();
-        sceneManager = new SceneManager();
+        sceneManager = new PC.SceneManager();
         sceneManager.Initialize(GetScene(Scene.Main));
     }
 
@@ -133,7 +165,7 @@ public class MainGame : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             var currentScene = sceneManager.GetCurrentScene();
-            if (currentScene == Scene.StageSelect)
+            if (currentScene == Scene.Shop)
             {
                 EarnMoney(100);
             }
@@ -141,7 +173,7 @@ public class MainGame : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             var currentScene = sceneManager.GetCurrentScene();
-            if (currentScene == Scene.StageSelect)
+            if (currentScene == Scene.Shop)
             {
                 SpendMoney(100);
             }

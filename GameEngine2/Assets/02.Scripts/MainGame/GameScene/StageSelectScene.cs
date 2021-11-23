@@ -80,7 +80,11 @@ public class StageSelectScene : GameScene
     public override void SceneUpdate()
     {
         base.SceneUpdate();
-        stageText.text = _currentStageIndex.ToString();
+
+        if (_currentStageIndex == 1) 
+            stageText.text = "Tutorial";
+        else
+            stageText.text = "Stage " + (_currentStageIndex - 1).ToString();
         stageImage.sprite = stageImages[_currentStageIndex - 1];
     }
 }

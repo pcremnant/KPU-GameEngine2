@@ -5,7 +5,8 @@ public enum Scene
     StageSelect = 1,
     Playing = 2,
     Pause = 3,
-    Result = 4
+    Shop = 4,
+    Result = 5
 }
 
 public class GameScene : MonoBehaviour
