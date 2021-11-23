@@ -135,7 +135,15 @@ public class MainGame : MonoBehaviour
             var currentScene = sceneManager.GetCurrentScene();
             if (currentScene == Scene.StageSelect)
             {
-
+                EarnMoney(100);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            var currentScene = sceneManager.GetCurrentScene();
+            if (currentScene == Scene.StageSelect)
+            {
+                SpendMoney(100);
             }
         }
         sceneManager.SceneUpdate();
