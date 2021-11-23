@@ -28,7 +28,7 @@ public class Gun : MonoBehaviour
     public float damage = 25; // 공격력
     public float fireDistance = 100f; // 사정거리
 
-    public int ammoRemain = 100; // 남은 전체 탄약
+    public int ammoRemain = 1000; // 남은 전체 탄약
     public int magAmmo; // 현재 탄창에 남아있는 탄약
     public int magCapacity = 30; // 탄창 용량
 
