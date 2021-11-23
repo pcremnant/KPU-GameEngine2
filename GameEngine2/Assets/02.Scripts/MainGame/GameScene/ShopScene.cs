@@ -5,13 +5,22 @@ using UnityEngine.UI;
 
 public class ShopScene : GameScene
 {
-    [SerializeField]
     public SceneUI sceneUI;
-
+    public ItemDatabase itemDatabase;
+    public RectTransform itemTarget;
+    public GameObject itemPrefab;
     public override void CreateScene()
     {
         base.CreateScene();
         _myScene = Scene.Playing;
+        if (!sceneUI.gameObject.activeSelf)
+            sceneUI.gameObject.SetActive(true);
+        foreach (var item in itemDatabase.itemDatas)
+        {
+            var go = Instantiate(itemPrefab, itemTarget);
+            var io = go.GetComponent<Item>();
+            io.SetItem(item);
+        }
         sceneUI.gameObject.SetActive(false);
     }
 
