@@ -41,4 +41,9 @@ public class SceneManager
         if (scene.initialzied)
             scene.SceneUpdate();
     }
+
+    public Scene GetCurrentScene()
+    {
+        return scenes.Peek().MyScene;
+    }
 }

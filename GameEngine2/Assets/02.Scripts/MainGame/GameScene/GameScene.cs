@@ -1,4 +1,12 @@
 using UnityEngine;
+public enum Scene
+{
+    Main = 0,
+    StageSelect = 1,
+    Playing = 2,
+    Pause = 3,
+    Result = 4
+}
 
 public class GameScene : MonoBehaviour
 {
@@ -12,6 +20,14 @@ public class GameScene : MonoBehaviour
 
     public bool initialzied => _initialized;
     protected bool _initialized = false;
+
+    public Scene MyScene => _myScene;
+    protected Scene _myScene;
+    
+    public virtual void CreateScene()
+    {
+
+    }
 
     // æ¿ √ ±‚»≠
     public virtual void Initialize()
@@ -30,7 +46,8 @@ public class GameScene : MonoBehaviour
     // º“∏Í¿⁄
     public virtual void DestroyScene()
     {
-
+        _endScene = true;
+        _initialized = false;
     }
 
     public virtual void Pause()

@@ -14,4 +14,9 @@ public class Stage : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public bool IsOnStage()
+    {
+        return gameObject.activeSelf;
+    }
 }
