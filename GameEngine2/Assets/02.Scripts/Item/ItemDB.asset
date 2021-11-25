@@ -15,4 +15,7 @@ MonoBehaviour:
   itemDatas:
   - itemPrice: 5
     itemName: bullet
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300010, guid: 309ac3eb4cc441349b63128366ca98b6, type: 3}
+  - itemPrice: 20
+    itemName: grenade
+    itemSprite: {fileID: 21300026, guid: 309ac3eb4cc441349b63128366ca98b6, type: 3}
