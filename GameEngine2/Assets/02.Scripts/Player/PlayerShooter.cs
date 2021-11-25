@@ -17,6 +17,9 @@ public class PlayerShooter : MonoBehaviour
     public Gun gun; // 사용할 총
     public LayerMask excludeTarget;
 
+    public GameObject p_Grenade;
+    public float GrenadeThrowpower = 10;
+
     private PlayerInput playerInput;
     private Animator playerAnimator; // 애니메이터 컴포넌트
     private Camera playerCamera;
@@ -58,15 +61,19 @@ public class PlayerShooter : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerInput.fire)
-        {
-            lastFireInputIime = Time.time;
-            Shoot();
-        }
-        else if (playerInput.reload)
-        {
-            Reload();
-        }
+        //if (playerInput.fire)
+        //{
+        //    lastFireInputIime = Time.time;
+        //    Shoot();
+        //}
+        //else if (playerInput.reload)
+        //{
+        //    Reload();
+        //}
+        //else if (playerInput.throwG)
+        //{
+        //    ThrowGrenade();
+        //}
     }
 
     private void Update()
@@ -86,6 +93,20 @@ public class PlayerShooter : MonoBehaviour
         }
 
         //UpdateUI();
+
+        if (playerInput.fire)
+        {
+            lastFireInputIime = Time.time;
+            Shoot();
+        }
+        else if (playerInput.reload)
+        {
+            Reload();
+        }
+        else if (playerInput.throwG)
+        {
+            ThrowGrenade();
+        }
     }
 
     public void Shoot()
@@ -111,7 +132,34 @@ public class PlayerShooter : MonoBehaviour
     public void Reload()
     {
         // 재장전 입력 감지시 재장전
-        //if (gun.Reload()) playerAnimator.SetTrigger("Reload");
+        if (gun.Reload()) playerAnimator.SetTrigger("Reload");
+    }
+
+    public void ThrowGrenade()
+    {
+        //Debug.Log("throwInput");
+        if (gun.state != Gun.State.Reloading)
+        {
+            //Debug.Log("throw");
+            playerAnimator.SetTrigger("Throw");
+
+            //인보크로 실행
+            Invoke("MakeGrenade", 2f);
+        }
+    }
+
+    void MakeGrenade()
+    {
+        var pos = transform.position;
+        var dir = transform.forward;
+        pos += dir * 3;
+        pos.y += 1;
+        var grenade = Instantiate(p_Grenade, pos, transform.rotation);
+        var rigidGrenade = grenade.GetComponent<Rigidbody>();
+
+        dir.y += 0.3f;
+        rigidGrenade.AddForce(dir* GrenadeThrowpower, ForceMode.Impulse);
+        rigidGrenade.AddTorque(Vector3.back * 10, ForceMode.Impulse);
     }
 
     private void UpdateAimTarget()

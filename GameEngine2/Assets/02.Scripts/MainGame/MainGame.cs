@@ -15,6 +15,9 @@ public class MainGame : MonoBehaviour
     [SerializeField]
     public TMP_Text moneyText;
 
+    // by oychan
+    public static bool SpawnerOn = false;
+    
     private bool SpendMoney(int cost)
     {
         if (cost > _money) return false;
@@ -36,7 +39,7 @@ public class MainGame : MonoBehaviour
 
     public void OnQuitButton()
     {
-// °ÔÀÓ Á¾·á
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -46,6 +49,7 @@ public class MainGame : MonoBehaviour
 
     public void OnStageSelectButton()
     {
+        SpawnerOn = true;
         sceneManager.Push(GetScene(Scene.Playing));
     }
 
@@ -119,6 +123,7 @@ public class MainGame : MonoBehaviour
             case Scene.StageSelect:
                 return gameScenes[1];
             case Scene.Playing:
+                //SpawnerOn = true;
                 return gameScenes[2];
             case Scene.Pause:
                 return gameScenes[3];
@@ -161,7 +166,7 @@ public class MainGame : MonoBehaviour
             }
         }
 
-        // ÀÓ½Ã Å×½ºÆ®¿ë ÄÚµå
+        // ï¿½Ó½ï¿½ ï¿½×½ï¿½Æ®ï¿½ï¿½ ï¿½Úµï¿½
         if (Input.GetKeyDown(KeyCode.I))
         {
             var currentScene = sceneManager.GetCurrentScene();

@@ -10,12 +10,14 @@ public class PlayerInput : MonoBehaviour
     public string fireButtonName = "Fire1";
     public string jumpButtonName = "Jump"; 
     public string reloadButtonName = "Reload";
+    public string throwButtonName = "Throw";
 
 
     public Vector3 moveInput { get; private set; } 
     public bool fire { get; private set; } 
     public bool reload { get; private set; }
     public bool jump { get; private set; }
+    public bool throwG { get; private set; }
 
     public bool isMouseLock = false;
 
@@ -43,6 +45,7 @@ public class PlayerInput : MonoBehaviour
         }
 
 
+
         moveInput = new Vector2(Input.GetAxis(moveHorizontalAxisName), Input.GetAxis(moveVerticalAxisName));
 
         if (moveInput.sqrMagnitude > 1) moveInput = moveInput.normalized;
@@ -50,5 +53,6 @@ public class PlayerInput : MonoBehaviour
         jump = Input.GetButtonDown(jumpButtonName);
         fire = Input.GetButton(fireButtonName);
         reload = Input.GetButtonDown(reloadButtonName);
+        throwG= Input.GetButtonDown(throwButtonName);
     }
 }
