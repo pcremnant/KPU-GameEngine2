@@ -19,6 +19,6 @@ public class TutorialSphere : MonoBehaviour, IDamageable
     public bool ApplyDamage(DamageMessage damageMessage)
     {
         tutorialMgr.HitSphere(Index);
-        return false;
+        return true;
     }
 }
