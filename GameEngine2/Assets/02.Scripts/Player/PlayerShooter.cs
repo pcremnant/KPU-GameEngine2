@@ -20,6 +20,8 @@ public class PlayerShooter : MonoBehaviour
     public GameObject p_Grenade;
     public float GrenadeThrowpower = 10;
 
+    private bool isThrowGrenade = false;
+
     private PlayerInput playerInput;
     private Animator playerAnimator; // 애니메이터 컴포넌트
     private Camera playerCamera;
@@ -138,18 +140,18 @@ public class PlayerShooter : MonoBehaviour
     public void ThrowGrenade()
     {
         //Debug.Log("throwInput");
-        if (gun.state != Gun.State.Reloading)
+        if (gun.state != Gun.State.Reloading && !isThrowGrenade && PlayerInfo.Instance.grenade > 0)
         {
-            //Debug.Log("throw");
+            PlayerInfo.Instance.grenade -= 1;
+            isThrowGrenade = true;
             playerAnimator.SetTrigger("Throw");
 
-            //인보크로 실행
-            Invoke("MakeGrenade", 2f);
+            StartCoroutine(MakeGrenade());
         }
     }
-
-    void MakeGrenade()
+    private IEnumerator MakeGrenade()
     {
+        yield return new WaitForSeconds(2.0f);
         var pos = transform.position;
         var dir = transform.forward;
         pos += dir * 3;
@@ -158,9 +160,14 @@ public class PlayerShooter : MonoBehaviour
         var rigidGrenade = grenade.GetComponent<Rigidbody>();
 
         dir.y += 0.3f;
-        rigidGrenade.AddForce(dir* GrenadeThrowpower, ForceMode.Impulse);
+        rigidGrenade.AddForce(dir * GrenadeThrowpower, ForceMode.Impulse);
         rigidGrenade.AddTorque(Vector3.back * 10, ForceMode.Impulse);
+
+        yield return new WaitForSeconds(2.0f);
+        isThrowGrenade = false;
     }
+
+
 
     private void UpdateAimTarget()
     {
