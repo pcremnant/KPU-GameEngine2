@@ -17,7 +17,8 @@ public class TutorialUI : MonoBehaviour
 
     void Update()
     {
-        transform.LookAt(Camera.main.transform);
+        if (gameObject.activeSelf)
+            transform.LookAt(Camera.main.transform);
     }
 
     public void SetScoreText(int curScore, int maxScore)

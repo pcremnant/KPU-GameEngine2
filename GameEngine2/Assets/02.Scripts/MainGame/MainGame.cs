@@ -79,6 +79,20 @@ public class MainGame : MonoBehaviour
         }
     }
 
+    public void OnResultQuitButton()
+    {
+        Scene scene = sceneManager.GetCurrentScene();
+        while (scene != Scene.StageSelect)
+        {
+            if (sceneManager.Pop())
+            {
+                scene = sceneManager.GetCurrentScene();
+                continue;
+            }
+            break;
+        }
+    }
+
     public void OnStageSelectBackButton()
     {
         Scene scene = sceneManager.GetCurrentScene();
@@ -136,6 +150,8 @@ public class MainGame : MonoBehaviour
                 return gameScenes[3];
             case Scene.Shop:
                 return gameScenes[4];
+            case Scene.Result:
+                return gameScenes[5];
             default:
                 return null;
         }
@@ -195,6 +211,16 @@ public class MainGame : MonoBehaviour
                 SpendMoney(100);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            var currentScene = sceneManager.GetCurrentScene();
+            if (currentScene == Scene.Playing)
+            {
+                sceneManager.Push(GetScene(Scene.Result));
+            }
+        }
+
         sceneManager.SceneUpdate();
     }
 }

@@ -21,6 +21,9 @@ public class StageSelectScene : GameScene
     [SerializeField]
     public List<Sprite> stageImages;
 
+   //  public GamePlayingScene playingScene;
+
+    public int CurrentStageIndex => _currentStageIndex;
     private int _currentStageIndex;
     public override void CreateScene()
     {
@@ -75,6 +78,10 @@ public class StageSelectScene : GameScene
     {
         base.Resume();
         sceneUI.gameObject.SetActive(true);
+        foreach (var stage in Stages)
+        {
+            stage.OffStage();
+        }
     }
 
     public override void SceneUpdate()
