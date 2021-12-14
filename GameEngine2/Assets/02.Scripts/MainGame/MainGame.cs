@@ -20,12 +20,12 @@ public class MainGame : MonoBehaviour
     private int _gunLevel = 1;
     public TMP_Text gunText;
 
-
+    // public ItemData selected;
 
     // by oychan
     public static bool SpawnerOn = false;
     
-    private bool SpendMoney(int cost)
+    public bool SpendMoney(int cost)
     {
         if (cost > _money) return false;
         _money -= cost;
@@ -33,7 +33,7 @@ public class MainGame : MonoBehaviour
         return true;
     }
 
-    private void EarnMoney(int cost)
+    public void EarnMoney(int cost)
     {
         _money += cost;
         moneyText.text = _money.ToString();
@@ -118,6 +118,23 @@ public class MainGame : MonoBehaviour
                 continue;
             }
             break;
+        }
+    }
+
+    public void ApplyItem(Item item)
+    {
+        switch(item.ItemData.itemIndex)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                _gunLevel++;
+                break;
+            default:
+                break;
+
         }
     }
 

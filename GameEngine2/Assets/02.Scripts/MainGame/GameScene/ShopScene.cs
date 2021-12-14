@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,11 @@ public class ShopScene : GameScene
     public ItemDatabase itemDatabase;
     public RectTransform itemTarget;
     public GameObject itemPrefab;
+
+    public TMP_Text itemDescription;
+    private Item selectedItem;
+    public MainGame mainGame;
+
     public override void CreateScene()
     {
         base.CreateScene();
@@ -20,6 +26,7 @@ public class ShopScene : GameScene
             var go = Instantiate(itemPrefab, itemTarget);
             var io = go.GetComponent<Item>();
             io.SetItem(item);
+            io.shopScene = this;
         }
         sceneUI.gameObject.SetActive(false);
     }
@@ -52,10 +59,21 @@ public class ShopScene : GameScene
     public override void SceneUpdate()
     {
         base.SceneUpdate();
+        if (selectedItem != null)
+            itemDescription.text = selectedItem.ItemData.description;
     }
 
     public void OnBuyButton()
     {
+        if (mainGame.SpendMoney(selectedItem.ItemData.itemPrice))
+        {
+            mainGame.ApplyItem(selectedItem);
+        }
         // add something
+    }
+
+    public void SelectItem(Item item)
+    {
+        selectedItem = item;
     }
 }

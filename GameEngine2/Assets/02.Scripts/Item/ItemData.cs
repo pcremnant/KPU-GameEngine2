@@ -7,7 +7,9 @@ using UnityEngine;
 [Serializable]
 public struct ItemData
 {
+    public int itemIndex;
     public int itemPrice;
     public string itemName;
+    public string description;
     public Sprite itemSprite;
 }
