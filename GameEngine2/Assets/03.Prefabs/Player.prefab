@@ -913,6 +913,7 @@ GameObject:
   - component: {fileID: 3232101963629813511}
   - component: {fileID: 3232101963629813508}
   - component: {fileID: 3232101963629813509}
+  - component: {fileID: 7375804337919242844}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -991,6 +992,7 @@ MonoBehaviour:
   fireButtonName: Fire1
   jumpButtonName: Jump
   reloadButtonName: Reload
+  throwButtonName: Throw
   isMouseLock: 0
 --- !u!114 &3232101963629813508
 MonoBehaviour:
@@ -1025,6 +1027,22 @@ MonoBehaviour:
   excludeTarget:
     serializedVersion: 2
     m_Bits: 0
+  p_Grenade: {fileID: 0}
+  GrenadeThrowpower: 10
+--- !u!114 &7375804337919242844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2313674063421426700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622f28160c9dc554190e51e060150d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  maxHp: 100
 --- !u!1 &2500858323573790760
 GameObject:
   m_ObjectHideFlags: 0

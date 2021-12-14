@@ -22,6 +22,9 @@ public class TutorialUI : MonoBehaviour
 
     public void SetScoreText(int curScore, int maxScore)
     {
-        ScoreText.text = curScore.ToString() + " / " + maxScore.ToString();
+        if (curScore >= maxScore)
+            ScoreText.text = "Clear!!";
+        else
+            ScoreText.text = curScore.ToString() + " / " + maxScore.ToString();
     }
 }
