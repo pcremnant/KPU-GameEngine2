@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         //currentVelocityY += Time.deltaTime * Physics.gravity.y;
 
         //var velocity = moveDirection * targetSpeed + Vector3.up * currentVelocityY;
-        var velocity = moveDirection * targetSpeed;
+        var velocity = moveDirection * targetSpeed + Vector3.down * 4.8f;
 
 
         characterController.Move(velocity * Time.deltaTime);

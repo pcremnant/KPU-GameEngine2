@@ -19,3 +19,21 @@ MonoBehaviour:
   - itemPrice: 20
     itemName: grenade
     itemSprite: {fileID: 21300026, guid: 309ac3eb4cc441349b63128366ca98b6, type: 3}
+  - itemPrice: 10
+    itemName: HealthPack
+    itemSprite: {fileID: 21300052, guid: 309ac3eb4cc441349b63128366ca98b6, type: 3}
+  - itemPrice: 50
+    itemName: grenade2
+    itemSprite: {fileID: 21300028, guid: 309ac3eb4cc441349b63128366ca98b6, type: 3}
+  - itemPrice: 2
+    itemName: b1
+    itemSprite: {fileID: 21300000, guid: 309ac3eb4cc441349b63128366ca98b6, type: 3}
+  - itemPrice: 3
+    itemName: b2
+    itemSprite: {fileID: 21300002, guid: 309ac3eb4cc441349b63128366ca98b6, type: 3}
+  - itemPrice: 4
+    itemName: b5
+    itemSprite: {fileID: 21300008, guid: 309ac3eb4cc441349b63128366ca98b6, type: 3}
+  - itemPrice: 100
+    itemName: ex
+    itemSprite: {fileID: 21300048, guid: 309ac3eb4cc441349b63128366ca98b6, type: 3}
