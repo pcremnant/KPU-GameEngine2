@@ -21,6 +21,7 @@ public class StageSelectScene : GameScene
     [SerializeField]
     public List<Sprite> stageImages;
 
+    public MainGame mainGame;
    //  public GamePlayingScene playingScene;
 
     public int CurrentStageIndex => _currentStageIndex;
@@ -41,7 +42,7 @@ public class StageSelectScene : GameScene
 
     public void OnNextStageButton()
     {
-        if (_currentStageIndex < Stages.Count)
+        if (_currentStageIndex < Stages.Count && _currentStageIndex < mainGame.MaxStage)
             _currentStageIndex++;
     }
 

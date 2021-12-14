@@ -14,6 +14,7 @@ public class MainGame : MonoBehaviour
     private int _money = 0;
     public TMP_Text moneyText;
 
+    public int MaxStage => _maxStage;
     private int _maxStage = 0;
     public TMP_Text stageText;
 
@@ -25,6 +26,12 @@ public class MainGame : MonoBehaviour
     // by oychan
     public static bool SpawnerOn = false;
     
+    public void ClearStage(int stageIndex)
+    {
+        if (_maxStage < stageIndex)
+            _maxStage = stageIndex;
+    }
+
     public bool SpendMoney(int cost)
     {
         if (cost > _money) return false;

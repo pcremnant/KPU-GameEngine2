@@ -10,6 +10,7 @@ public class ResultScene : GameScene
     public SceneUI sceneUI;
     public StageSelectScene stageScene;
     public TMP_Text moneyText;
+    public MainGame mainGame;
 
     public override void CreateScene()
     {
@@ -27,6 +28,8 @@ public class ResultScene : GameScene
     public override void DestroyScene()
     {
         base.DestroyScene();
+        mainGame.EarnMoney(stageScene.CurrentStageIndex * 30);
+        mainGame.ClearStage(stageScene.CurrentStageIndex + 1);
         sceneUI.gameObject.SetActive(false);
     }
 

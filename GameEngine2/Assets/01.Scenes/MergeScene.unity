@@ -9514,7 +9514,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231634720}
-  m_LocalRotation: {x: -0.0074929483, y: 0.19910856, z: 0.0015224392, w: 0.9799476}
+  m_LocalRotation: {x: -0.0074929483, y: 0.19910856, z: 0.0015224383, w: 0.9799476}
   m_LocalPosition: {x: -465.40005, y: -210.71933, z: 206.51665}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -17038,6 +17038,7 @@ MonoBehaviour:
   sceneUI: {fileID: 1314536044}
   stageScene: {fileID: 423346198}
   moneyText: {fileID: 1363781730}
+  mainGame: {fileID: 60284046}
 --- !u!4 &423085573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011066351628, guid: 36b4cee33c5a95b4fa7f0ae6bdb49564, type: 3}
@@ -17140,6 +17141,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6c1e6672c3e6a03448784a78ec3b3c37, type: 3}
   - {fileID: 21300000, guid: 3e63ea7ebdd28c643b6a236da0b760f1, type: 3}
   - {fileID: 21300000, guid: 56dada8c93a0a734eb2c55638c8a7bcd, type: 3}
+  mainGame: {fileID: 60284046}
 --- !u!4 &423346199
 Transform:
   m_ObjectHideFlags: 0
@@ -46202,6 +46204,8 @@ MonoBehaviour:
   itemDatabase: {fileID: 11400000, guid: cb25a41dbf38a9242bd031c74a9f27c9, type: 2}
   itemTarget: {fileID: 515265225}
   itemPrefab: {fileID: 901592161589284443, guid: 09094c2273de01643ba2645b6132abd0, type: 3}
+  itemDescription: {fileID: 1656760990}
+  mainGame: {fileID: 60284046}
 --- !u!4 &1164184322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011416029138, guid: 845bb3e01ad4efe44adb29f965b2150b, type: 3}
@@ -51806,7 +51810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b9688103531e847924526b4a79d633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 3
+  sceneIndex: 5
 --- !u!4 &1315799365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013149834228, guid: 6857ff1d3761e21479727f3b27cc8f68, type: 3}
@@ -65266,10 +65270,10 @@ RectTransform:
   m_Father: {fileID: 1713606471}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -59.611, y: -25.940487}
-  m_SizeDelta: {x: 200, y: 177.881}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 2.5801086, y: -25.940487}
+  m_SizeDelta: {x: -37.617798, y: -96.119}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1656760990
 MonoBehaviour:
@@ -65291,13 +65295,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'items list
-
-    bullets x 10
-
-    portion x 10
-
-    etc...'
+  m_text: item description
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -73155,7 +73153,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837001079}
-  m_LocalRotation: {x: -0.0074929507, y: 0.19910854, z: 0.0015224391, w: 0.9799476}
+  m_LocalRotation: {x: -0.0074929497, y: 0.19910854, z: 0.0015224388, w: 0.9799476}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
