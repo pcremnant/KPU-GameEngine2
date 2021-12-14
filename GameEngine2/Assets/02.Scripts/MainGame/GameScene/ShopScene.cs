@@ -12,7 +12,7 @@ public class ShopScene : GameScene
     public override void CreateScene()
     {
         base.CreateScene();
-        _myScene = Scene.Playing;
+        _myScene = Scene.Shop;
         if (!sceneUI.gameObject.activeSelf)
             sceneUI.gameObject.SetActive(true);
         foreach (var item in itemDatabase.itemDatas)

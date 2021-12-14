@@ -12,8 +12,15 @@ public class MainGame : MonoBehaviour
 
     public int Money => _money;
     private int _money = 0;
-    [SerializeField]
     public TMP_Text moneyText;
+
+    private int _maxStage = 0;
+    public TMP_Text stageText;
+
+    private int _gunLevel = 1;
+    public TMP_Text gunText;
+
+
 
     // by oychan
     public static bool SpawnerOn = false;
@@ -140,7 +147,6 @@ public class MainGame : MonoBehaviour
         foreach (var scene in gameScenes)
         {
             scene.CreateScene();
-
         }
         moneyText.text = _money.ToString();
         sceneManager = new PC.SceneManager();
@@ -149,6 +155,13 @@ public class MainGame : MonoBehaviour
 
     void Update()
     {
+        var currScene = sceneManager.GetCurrentScene();
+        if (currScene == Scene.Main)
+        {
+            stageText.text = "Max Stage : " + _maxStage.ToString();
+            gunText.text = "Gun Level : " + _gunLevel.ToString();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             var currentScene = sceneManager.GetCurrentScene();
@@ -166,7 +179,6 @@ public class MainGame : MonoBehaviour
             }
         }
 
-        // �ӽ� �׽�Ʈ�� �ڵ�
         if (Input.GetKeyDown(KeyCode.I))
         {
             var currentScene = sceneManager.GetCurrentScene();
