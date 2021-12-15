@@ -10,8 +10,9 @@ public class ResultScene : GameScene
     public SceneUI sceneUI;
     public StageSelectScene stageScene;
     public TMP_Text moneyText;
+    public TMP_Text resultText;
     public MainGame mainGame;
-
+    private bool _playerWin;
     public override void CreateScene()
     {
         base.CreateScene();
@@ -28,8 +29,11 @@ public class ResultScene : GameScene
     public override void DestroyScene()
     {
         base.DestroyScene();
-        mainGame.EarnMoney(stageScene.CurrentStageIndex * 30);
-        mainGame.ClearStage(stageScene.CurrentStageIndex + 1);
+        if (_playerWin)
+        {
+            mainGame.EarnMoney(stageScene.CurrentStageIndex * 30);
+            mainGame.ClearStage(stageScene.CurrentStageIndex + 1);
+        }
         sceneUI.gameObject.SetActive(false);
     }
 
@@ -48,6 +52,26 @@ public class ResultScene : GameScene
     public override void SceneUpdate()
     {
         base.SceneUpdate();
-        moneyText.text = (stageScene.CurrentStageIndex * 30).ToString();
+        if (_playerWin)
+        {
+            moneyText.text = (stageScene.CurrentStageIndex * 30).ToString();
+        }
+        else
+        {
+            moneyText.text = 0.ToString();
+        }
+    }
+
+    public void SetPlayerWin(bool win)
+    {
+        _playerWin = win;
+        if (win)
+        {
+            resultText.text = "Stage Clear";
+        }
+        else
+        {
+            resultText.text = "Stage Fail";
+        }
     }
 }

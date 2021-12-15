@@ -208,6 +208,28 @@ public class MainGame : MonoBehaviour
             gunText.text = "Gun Level : " + _gunLevel.ToString();
             hpText.text = "Additional Hp : " + _additionalHp.ToString();
         }
+        
+        if (currScene == Scene.Playing) // if (game end)
+        {
+            // 임시 코드 -> 게임 상태 확인해서 플레이어 승리 or 패배 세팅
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                ResultScene rs = (ResultScene)GetScene(Scene.Result);
+                rs.SetPlayerWin(true);
+                sceneManager.Push((GameScene)rs);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                ResultScene rs = (ResultScene)GetScene(Scene.Result);
+                rs.SetPlayerWin(false);
+                sceneManager.Push((GameScene)rs);
+            }
+        }
+
+        
+
+       
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -243,14 +265,7 @@ public class MainGame : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            var currentScene = sceneManager.GetCurrentScene();
-            if (currentScene == Scene.Playing)
-            {
-                sceneManager.Push(GetScene(Scene.Result));
-            }
-        }
+
 
         sceneManager.SceneUpdate();
     }
