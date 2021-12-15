@@ -11,6 +11,8 @@ public class GamePlayingScene : GameScene
     [SerializeField]
     public GameObject playingObjects;
 
+    public PlayerInfo player;
+
     public override void CreateScene()
     {
         base.CreateScene();
@@ -31,8 +33,15 @@ public class GamePlayingScene : GameScene
     {
         base.DestroyScene();
         sceneUI.gameObject.SetActive(false);
-        playingObjects.SetActive(false);
+        var enemies = FindObjectsOfType<EnemyAI>();
         // 게임 오브젝트들 다 지울 것
+        foreach (var enemy in enemies)
+        {
+            Destroy(enemy.gameObject);
+        }
+        // 플레이어 정보들은 일단 그대로 체력만 채워주자
+        player.hp = player.maxHp;
+        playingObjects.SetActive(false);
     }
 
     public override void Pause()

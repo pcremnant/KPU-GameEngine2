@@ -18,14 +18,19 @@ public class MainGame : MonoBehaviour
     private int _maxStage = 0;
     public TMP_Text stageText;
 
+    public int GunLevel => _gunLevel;
     private int _gunLevel = 1;
     public TMP_Text gunText;
+
+    public int AdditionalHp => _additionalHp;
+    private int _additionalHp = 0;
+    public TMP_Text hpText;
 
     // public ItemData selected;
 
     // by oychan
     public static bool SpawnerOn = false;
-    
+
     public void ClearStage(int stageIndex)
     {
         if (_maxStage < stageIndex)
@@ -133,6 +138,7 @@ public class MainGame : MonoBehaviour
         switch(item.ItemData.itemIndex)
         {
             case 0:
+                _additionalHp += 10;
                 break;
             case 1:
                 break;
@@ -200,6 +206,7 @@ public class MainGame : MonoBehaviour
         {
             stageText.text = "Max Stage : " + _maxStage.ToString();
             gunText.text = "Gun Level : " + _gunLevel.ToString();
+            hpText.text = "Additional Hp : " + _additionalHp.ToString();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
