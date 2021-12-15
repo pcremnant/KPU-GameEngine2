@@ -18,6 +18,9 @@ public class Grenade : MonoBehaviour
     IEnumerator Explosion()
     {
         yield return new WaitForSeconds(3f);
+
+        SoundMgr.instance.SFXPlay("Explosion", SoundMgr.instance.effectClip[1]);
+
         meshRenderer.enabled = false;
         rigid.velocity = Vector3.zero;
         rigid.angularVelocity = Vector3.zero;
