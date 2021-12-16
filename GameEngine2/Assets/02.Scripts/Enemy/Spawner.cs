@@ -20,6 +20,8 @@ public class Spawner : MonoBehaviour
 
     private bool SpawnerOn;
     private int i = 0;
+    
+    public Transform destination;
 
     public Transform transformHQ;
 
