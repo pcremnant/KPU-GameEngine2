@@ -26,6 +26,10 @@ public class MainGame : MonoBehaviour
     private int _additionalHp = 0;
     public TMP_Text hpText;
 
+    PlayerInfo playerInfo;
+    public TMP_Text grenadeText;
+
+
     public void LoadInfo(int money, int stage, int gunLevel, int additionalHp)
     {
         _money = money;
@@ -149,6 +153,7 @@ public class MainGame : MonoBehaviour
                 _additionalHp += 10;
                 break;
             case 1:
+                playerInfo.grenade++;
                 break;
             case 2:
                 _gunLevel++;
@@ -215,6 +220,7 @@ public class MainGame : MonoBehaviour
             stageText.text = "Max Stage : " + _maxStage.ToString();
             gunText.text = "Gun Level : " + _gunLevel.ToString();
             hpText.text = "Additional Hp : " + _additionalHp.ToString();
+            grenadeText.text = "Grenade : " + playerInfo.grenade.ToString();
         }
         
         if (currScene == Scene.Playing) // if (game end)
