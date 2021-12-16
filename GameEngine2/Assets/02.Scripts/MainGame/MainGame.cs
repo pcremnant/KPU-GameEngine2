@@ -32,6 +32,10 @@ public class MainGame : MonoBehaviour
 
     public PlayerInfo playerInfo;
 
+    public Stage stage1;
+    public Stage stage2;
+    public Stage stage3;
+    
     public void SaveInfo()
     {
         PlayerPrefs.SetInt("Hp", AdditionalHp);
@@ -251,9 +255,15 @@ public class MainGame : MonoBehaviour
         if (currScene == Scene.Playing) // if (game end)
         {
             // 임시 코드 -> 게임 상태 확인해서 플레이어 승리 or 패배 세팅
-            if (Input.GetKeyDown(KeyCode.Alpha3) || TutorialMgr.curScore == 10
-                                                 || PlayerInfo.destroySpanwerCnt >= GameObject.Find("Stage2").GetComponent<Stage>().enemySpawner.Count 
-                                                 || PlayerInfo.destroySpanwerCnt >= GameObject.Find("Stage3").GetComponent<Stage>().enemySpawner.Count)
+            if (Input.GetKeyDown(KeyCode.Alpha3) || TutorialMgr.curScore == 10)
+            {
+                ResultScene rs = (ResultScene)GetScene(Scene.Result);
+                rs.SetPlayerWin(true);
+                sceneManager.Push((GameScene)rs);
+                TutorialMgr.curScore = 0;
+            }
+            
+            if(stage2.IsOnStage() && PlayerInfo.destroySpanwerCnt >= stage2.enemySpawner.Count)
             {
                 ResultScene rs = (ResultScene)GetScene(Scene.Result);
                 rs.SetPlayerWin(true);
@@ -261,6 +271,14 @@ public class MainGame : MonoBehaviour
                 TutorialMgr.curScore = 0;
             }
 
+            if(stage3.IsOnStage() && PlayerInfo.destroySpanwerCnt >= stage3.enemySpawner.Count)
+            {
+                ResultScene rs = (ResultScene)GetScene(Scene.Result);
+                rs.SetPlayerWin(true);
+                sceneManager.Push((GameScene)rs);
+                TutorialMgr.curScore = 0;
+            }
+            
             if (Input.GetKeyDown(KeyCode.Alpha4) || GameObject.Find("Player").GetComponent<PlayerInfo>().hp <= 0)
             {
                 ResultScene rs = (ResultScene)GetScene(Scene.Result);
