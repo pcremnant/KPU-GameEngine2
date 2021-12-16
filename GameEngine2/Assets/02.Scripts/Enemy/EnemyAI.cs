@@ -33,7 +33,7 @@ public class EnemyAI : MonoBehaviour
 
         if (Alive())
         {
-            navMeshAgent.SetDestination(dest.destination.transform.position);
+            navMeshAgent.SetDestination(GameObject.Find("Spawner1").GetComponent<Spawner>().destination.position);
             //if (GetDistance())
                 //navMeshAgent.SetDestination(targetPlayer.transform.position);
         }
