@@ -41,6 +41,7 @@ public class MainGame : MonoBehaviour
         PlayerPrefs.SetInt("money", Money);
         PlayerPrefs.SetInt("stage", MaxStage);
         // PlayerPrefs.SetInt("grenade", grenade);
+        _grenade = playerInfo.grenade;
         PlayerPrefs.SetInt("grenade", Grenade);
     }
 
@@ -53,7 +54,7 @@ public class MainGame : MonoBehaviour
             _maxStage = PlayerPrefs.GetInt("stage");
             _gunLevel = PlayerPrefs.GetInt("gunLevel");
             _grenade = PlayerPrefs.GetInt("grenade");
-
+            playerInfo.grenade = Grenade;
             // hp = PlayerPrefs.GetInt("Hp");
             //gun.ammoRemain = PlayerPrefs.GetInt("ammoRemain");
             // money = PlayerPrefs.GetInt("money");
