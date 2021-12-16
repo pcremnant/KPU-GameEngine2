@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
+    public int maxHp;
+    public int curHp;
+    public Image HpBar;
+    
     public GameObject Enemy;
     public GameObject[] enemyList;
     
@@ -21,6 +26,9 @@ public class Spawner : MonoBehaviour
     {
         SpawnerOn = false;
         //StartWaves();
+        
+        HpBar.rectTransform.localScale = new Vector3(1f, 1f, 1f);
+        curHp = maxHp;
     }
 
     // Update is called once per frame
@@ -33,6 +41,9 @@ public class Spawner : MonoBehaviour
             // Debug.Log(++i + "번째");
             SpawnerOn = false;
         }
+        
+        HpBar.rectTransform.localScale =
+            new Vector3((float) curHp / (float) maxHp > 0 ? (float) curHp / (float) maxHp : 0, 1f, 1f);
     }
 
     public void StartWaves()
@@ -69,6 +80,18 @@ public class Spawner : MonoBehaviour
         }
         
         // StartWaves();
+    }
+    
+    public bool ApplyDamage(DamageMessage damageMessage)
+    {
+        curHp -= (int)damageMessage.amount;
+
+        if (curHp <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+        
+        return false;
     }
 }
 

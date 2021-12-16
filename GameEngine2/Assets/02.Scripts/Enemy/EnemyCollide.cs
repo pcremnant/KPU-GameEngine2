@@ -5,6 +5,8 @@ using System.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class EnemyCollide : MonoBehaviour, IDamageable
 {
@@ -16,7 +18,10 @@ public class EnemyCollide : MonoBehaviour, IDamageable
         Death = 3
     }
 
-    public int hp;
+    public int maxHp;
+    public int curHp;
+    public Image HpBar;
+    
     public Animator animator;
     private bool enemyDeath;
     private float deathTime;
@@ -35,7 +40,7 @@ public class EnemyCollide : MonoBehaviour, IDamageable
 
     private Spawner spawner;
     
-    [SerializeField] private NavMeshAgent navMeshAgent;
+    //[SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private Transform target;
 
     // Start is called before the first frame update
@@ -52,7 +57,9 @@ public class EnemyCollide : MonoBehaviour, IDamageable
         colorTime = 1;
 
         delayTime = 1;
-        originalSpeed = gameObject.GetComponent<NavMeshAgent>().speed;
+
+        HpBar.rectTransform.localScale = new Vector3(1f, 1f, 1f);
+        curHp = maxHp;
     }
 
     private void Update()
@@ -60,7 +67,7 @@ public class EnemyCollide : MonoBehaviour, IDamageable
         if (enemyDeath)
         {
             deathTime -= Time.deltaTime;
-            Debug.Log("Time: " + deathTime);
+            //Debug.Log("Time: " + deathTime);
             if (deathTime <= 0.0)
                 GameObject.Destroy(gameObject);
         }
@@ -85,14 +92,16 @@ public class EnemyCollide : MonoBehaviour, IDamageable
                 //navMeshAgent.destination = target.transform.position;
             }
         }
+        HpBar.rectTransform.localScale =
+            new Vector3((float) curHp / (float) maxHp > 0 ? (float) curHp / (float) maxHp : 0, 1f, 1f);
     }
 
     public bool ApplyDamage(DamageMessage damageMessage)
     {
-        hp -= (int)damageMessage.amount;
-        Debug.Log(hp);
+        curHp -= (int)damageMessage.amount;
+        Debug.Log("Attacked!!!: " + curHp);
         
-        if (hp <= 0)
+        if (curHp <= 0)
         {
             animator.SetBool("Death", true);
             enemyDeath = true;
