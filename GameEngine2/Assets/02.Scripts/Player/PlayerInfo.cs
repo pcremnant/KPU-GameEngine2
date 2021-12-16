@@ -37,6 +37,7 @@ public class PlayerInfo : MonoBehaviour, IDamageable
 
     public void SetDamage(int damage)
     {
+        
         hp -= damage;
         if (hp < 0)
             hp = 0;

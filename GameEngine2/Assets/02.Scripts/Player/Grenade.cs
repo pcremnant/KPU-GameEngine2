@@ -38,14 +38,14 @@ public class Grenade : MonoBehaviour
                 DamageMessage damageMessage;
 
                 damageMessage.damager = gameObject;
-                damageMessage.amount = 10;
+                damageMessage.amount = 40;
                 damageMessage.hitPoint = hit.point;
                 damageMessage.hitNormal = hit.normal;
 
-                // »ó´ë¹æÀÇ OnDamage ÇÔ¼ö¸¦ ½ÇÇà½ÃÄÑ¼­ »ó´ë¹æ¿¡°Ô µ¥¹ÌÁö ÁÖ±â
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ OnDamage ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¼ï¿½ ï¿½ï¿½ï¿½æ¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½
                 target.ApplyDamage(damageMessage);
             }
         }
-        Destroy(gameObject, 5); //ÀÌÆåÆ® ½Ã°£
+        Destroy(gameObject, 5); //ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ã°ï¿½
     }
 }

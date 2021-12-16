@@ -4053,7 +4053,6 @@ GameObject:
   - component: {fileID: 2975850911259770719}
   - component: {fileID: 2975850911259770688}
   - component: {fileID: 2975850911259770693}
-  - component: {fileID: 8732390533105100749}
   m_Layer: 0
   m_Name: CrabMonster_1 2
   m_TagString: Enemy
@@ -4130,7 +4129,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.7
+  m_Radius: 2
   m_Height: 6
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -4224,20 +4223,6 @@ MonoBehaviour:
   attackSpeed: 0
   attackRange: {fileID: 2975850912634891998}
   trailEffect: {fileID: 0}
---- !u!136 &8732390533105100749
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8732390533105100754}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8732395163086300736
 GameObject:
   m_ObjectHideFlags: 0

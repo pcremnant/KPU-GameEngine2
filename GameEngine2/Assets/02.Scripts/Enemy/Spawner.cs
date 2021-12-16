@@ -103,7 +103,7 @@ public class Spawner : MonoBehaviour, IDamageable
 
         if (curHp <= 0)
         {
-            gamePlayingScene.DestroyEnemies();
+            //gamePlayingScene.DestroyEnemies();
             gameObject.SetActive(false);
             PlayerInfo.destroySpanwerCnt += 1;
         }

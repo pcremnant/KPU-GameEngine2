@@ -15,15 +15,15 @@ public class HQ_HP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HpBar.rectTransform.localScale = new Vector3(1f, 1f, 1f);
-        curHp = maxHp;
+        //HpBar.rectTransform.localScale = new Vector3(1f, 1f, 1f);
+        //curHp = maxHp;
     }
 
     // Update is called once per frame
     void Update()
     {
-        HpBar.rectTransform.localScale =
-            new Vector3((float) curHp > 0 ? (float) curHp / (float) maxHp : 0, 1f, 1f);
+        //HpBar.rectTransform.localScale =
+            //new Vector3((float) curHp > 0 ? (float) curHp / (float) maxHp : 0, 1f, 1f);
 
         if (GetDistanceHQ())
         {
