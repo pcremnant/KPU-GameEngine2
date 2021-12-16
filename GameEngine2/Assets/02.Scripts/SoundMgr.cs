@@ -9,8 +9,9 @@ public class SoundMgr : MonoBehaviour
     public AudioClip[] effectClip; //0총소리,1수류탄
     public AudioClip[] BGClip; //0메뉴, 1스테이지
 
-    public AudioSource BGSound; 
+    public AudioSource BGSound;
 
+    public GameObject audioListenerObj; //메뉴에 브금 위해서
 
     void Awake()
     {
@@ -18,7 +19,7 @@ public class SoundMgr : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(instance);
-
+            BGSoundPlay(0);
         }
         else
         {
@@ -28,7 +29,7 @@ public class SoundMgr : MonoBehaviour
 
     private void Start()
     {
-        BGSoundPlay(BGClip[0]);
+        //BGSoundPlay(BGClip[0]);
     }
 
     void Update()
@@ -46,9 +47,15 @@ public class SoundMgr : MonoBehaviour
         Destroy(go, clip.length);
     }
 
-    public void BGSoundPlay(AudioClip clip)
+    public void BGSoundPlay(int index)
     {
-        BGSound.clip = clip;
+        if (index == 0)
+            audioListenerObj.SetActive(true);
+        else
+            audioListenerObj.SetActive(false);
+
+        BGSound.clip = BGClip[index]; //메뉴,스테이지
+
         BGSound.loop = true;
         BGSound.volume = 0.5f;
         BGSound.Play();
