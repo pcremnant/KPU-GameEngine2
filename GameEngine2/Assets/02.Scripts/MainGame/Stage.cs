@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Stage : MonoBehaviour
@@ -7,7 +8,7 @@ public class Stage : MonoBehaviour
 
     public static bool SpawnerOn = false;
 
-    public Spawner enemySpawner = null;
+    public List<Spawner> enemySpawner;
     public GameObject playerSpawnTransform;
     public GameObject player;
 
@@ -16,8 +17,13 @@ public class Stage : MonoBehaviour
         gameObject.SetActive(true);
         SpawnerOn = true;
         player.transform.position = playerSpawnTransform.transform.position;
-        if (enemySpawner != null)
-            enemySpawner.Init();
+        if (enemySpawner.Count != 0)
+        {
+            foreach (var es in enemySpawner)
+            {
+                es.Init();
+            }
+        }
     }
 
     public void OffStage()
