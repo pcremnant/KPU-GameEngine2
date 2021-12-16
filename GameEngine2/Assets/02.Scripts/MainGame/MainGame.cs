@@ -26,6 +26,14 @@ public class MainGame : MonoBehaviour
     private int _additionalHp = 0;
     public TMP_Text hpText;
 
+    public void LoadInfo(int money, int stage, int gunLevel, int additionalHp)
+    {
+        _money = money;
+        _maxStage = stage;
+        _gunLevel = gunLevel;
+        _additionalHp = additionalHp;
+    }
+
     // public ItemData selected;
 
     // by oychan
