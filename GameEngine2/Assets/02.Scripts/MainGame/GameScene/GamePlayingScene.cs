@@ -68,4 +68,18 @@ public class GamePlayingScene : GameScene
     {
         base.SceneUpdate();
     }
+
+    public void DestroyEnemies()
+    {
+        var enemies = FindObjectsOfType<EnemyAI>();
+        // 게임 오브젝트들 다 지울 것
+        foreach (var enemy in enemies)
+        {
+            var enemyCol = enemy.GetComponent<EnemyCollide>();
+            enemyCol.curHp = 0;
+            enemyCol.SpawnerDestroyed();
+           
+            // Destroy(enemy.gameObject);
+        }
+    }
 }

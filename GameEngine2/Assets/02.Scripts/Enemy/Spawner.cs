@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Spawner : MonoBehaviour
+public class Spawner : MonoBehaviour, IDamageable
 {
     public int maxHp;
     public int curHp;
@@ -22,6 +22,16 @@ public class Spawner : MonoBehaviour
     private int i = 0;
     
     public Transform destination;
+    public GamePlayingScene gamePlayingScene;
+
+    public void Init()
+    {
+        currentWaveIndex = -1;
+        SpawnerOn = true;
+        HpBar.rectTransform.localScale = new Vector3(1f, 1f, 1f);
+        curHp = maxHp;
+
+    }
 
     // Start is called before the first frame update
     void Awake()
@@ -36,7 +46,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpawnerOn = MainGame.SpawnerOn;
+        // SpawnerOn = MainGame.SpawnerOn;
         if (SpawnerOn)
         {
             StartWaves();
@@ -73,7 +83,7 @@ public class Spawner : MonoBehaviour
             GameObject clone = Instantiate(currentWave.enemyPrefabs[index],
                 new Vector3(transform.position.x + 1, transform.position.y, transform.position.z + 1),
                 Quaternion.identity);
-
+            
             enemyList.Append(clone);
 
             enemySpawnCount++;
@@ -90,6 +100,7 @@ public class Spawner : MonoBehaviour
 
         if (curHp <= 0)
         {
+            gamePlayingScene.DestroyEnemies();
             gameObject.SetActive(false);
         }
         

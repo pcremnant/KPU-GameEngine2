@@ -7,7 +7,7 @@ public class Stage : MonoBehaviour
 
     public static bool SpawnerOn = false;
 
-    public GameObject enemySpawnTransform;
+    public Spawner enemySpawner;
     public GameObject playerSpawnTransform;
     public GameObject player;
 
@@ -16,6 +16,7 @@ public class Stage : MonoBehaviour
         gameObject.SetActive(true);
         SpawnerOn = true;
         player.transform.position = playerSpawnTransform.transform.position;
+        enemySpawner.Init();
     }
 
     public void OffStage()
