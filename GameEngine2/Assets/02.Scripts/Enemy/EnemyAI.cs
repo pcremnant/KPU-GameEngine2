@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     private EnemyCollide Enemy;
     [SerializeField] private NavMeshAgent navMeshAgent;
     
-    public GameObject targetPlayer;
+    private GameObject targetPlayer;
     [SerializeField] private Transform destination;
     [SerializeField] private float distance;
     

@@ -46,14 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5924b4d9f3edae74f831461b82a1d456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 440449131281896168, guid: 09a0a3ad2c1c3be48b8b87dac0057a5c, type: 3}
+  maxHp: 100
+  curHp: 100
+  HpBar: {fileID: 0}
+  Enemy: {fileID: 8732390533105100754, guid: 3c2f1a6d3a3b16d4e8997bf66d922197, type: 3}
   enemyList:
-  - {fileID: 440449131281896168, guid: 09a0a3ad2c1c3be48b8b87dac0057a5c, type: 3}
+  - {fileID: 8732390533105100754, guid: 3c2f1a6d3a3b16d4e8997bf66d922197, type: 3}
   waves:
   - spawnTime: 5
     maxEnemyCount: 6
     enemyPrefabs:
-    - {fileID: 440449131281896168, guid: 09a0a3ad2c1c3be48b8b87dac0057a5c, type: 3}
+    - {fileID: 8732390533105100754, guid: 3c2f1a6d3a3b16d4e8997bf66d922197, type: 3}
 --- !u!135 &5764247064024127384
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -4206,8 +4206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 1427988862894643318}
-  targetPlayer: {fileID: 0}
-  destination: {fileID: 0}
+  destination: {fileID: 6288363344399470225, guid: 2371d55d298d51b408869801c0f7c104, type: 3}
   distance: 10
 --- !u!114 &2975850911259770693
 MonoBehaviour:

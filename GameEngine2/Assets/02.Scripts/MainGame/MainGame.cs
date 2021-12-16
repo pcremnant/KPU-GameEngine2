@@ -250,11 +250,12 @@ public class MainGame : MonoBehaviour
         if (currScene == Scene.Playing) // if (game end)
         {
             // 임시 코드 -> 게임 상태 확인해서 플레이어 승리 or 패배 세팅
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            if (Input.GetKeyDown(KeyCode.Alpha3) || TutorialMgr.curScore == 10)
             {
                 ResultScene rs = (ResultScene)GetScene(Scene.Result);
                 rs.SetPlayerWin(true);
                 sceneManager.Push((GameScene)rs);
+                TutorialMgr.curScore = 0;
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha4))

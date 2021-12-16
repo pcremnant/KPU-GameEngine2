@@ -10,7 +10,7 @@ public class TutorialMgr : MonoBehaviour
     public float width;
     public float height;
     public int maxScore;
-    public int curScore;
+    public static int curScore;
 
     float halfWidth;
     float halfHeight;
