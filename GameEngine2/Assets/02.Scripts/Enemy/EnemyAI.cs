@@ -10,8 +10,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private NavMeshAgent navMeshAgent;
     
     private GameObject targetPlayer;
-    [SerializeField] private Transform destination;
+    [SerializeField] public Transform destination;
     [SerializeField] private float distance;
+
     
     // Start is called before the first frame update
     private void Awake()
@@ -26,16 +27,23 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("AI:" + Enemy.curHp);
+        //Debug.Log("AI:" + Enemy.curHp);
         
         //else if(EnemyCollide.enemyHit)
         //   navMeshAgent.destination = gameObject.transform.position;
 
         if (Alive())
         {
+            Debug.Log(destination.transform.position);
             navMeshAgent.SetDestination(destination.transform.position);
-            if (GetDistance())
-                navMeshAgent.SetDestination(targetPlayer.transform.position);
+            //if (GetDistance())
+            //    navMeshAgent.SetDestination(targetPlayer.transform.position);
+            if(Vector3.Distance(transform.position, destination.transform.position) <= 3.0f)
+            {
+                Enemy.SetDead();
+
+                PlayerInfo.Instance.SetDamage(5);
+            }
         }
         else
         {

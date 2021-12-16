@@ -21,6 +21,8 @@ public class Spawner : MonoBehaviour
     private bool SpawnerOn;
     private int i = 0;
 
+    public Transform transformHQ;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -71,6 +73,8 @@ public class Spawner : MonoBehaviour
             GameObject clone = Instantiate(currentWave.enemyPrefabs[index],
                 new Vector3(transform.position.x + 1, transform.position.y, transform.position.z + 1),
                 Quaternion.identity);
+
+            clone.GetComponent<EnemyAI>().destination = transformHQ;
 
             enemyList.Append(clone);
 
