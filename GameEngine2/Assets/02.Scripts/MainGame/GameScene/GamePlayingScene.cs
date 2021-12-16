@@ -27,6 +27,9 @@ public class GamePlayingScene : GameScene
         sceneUI.gameObject.SetActive(true);
         playingObjects.SetActive(true);
         Time.timeScale = 1f;
+
+        //스테이지 브금
+        SoundMgr.instance.BGSoundPlay(1);
     }
 
     public override void DestroyScene()
@@ -42,6 +45,9 @@ public class GamePlayingScene : GameScene
         // 플레이어 정보들은 일단 그대로 체력만 채워주자
         player.hp = player.maxHp;
         playingObjects.SetActive(false);
+
+        //메뉴 브금
+        SoundMgr.instance.BGSoundPlay(0);
     }
 
     public override void Pause()
