@@ -26,16 +26,39 @@ public class MainGame : MonoBehaviour
     private int _additionalHp = 0;
     public TMP_Text hpText;
 
-    public PlayerInfo playerInfo;
+    public int Grenade => _grenade;
+    private int _grenade;
     public TMP_Text grenadeText;
 
+    public PlayerInfo playerInfo;
 
-    public void LoadInfo(int money, int stage, int gunLevel, int additionalHp)
+    public void SaveInfo()
     {
-        _money = money;
-        _maxStage = stage;
-        _gunLevel = gunLevel;
-        _additionalHp = additionalHp;
+        PlayerPrefs.SetInt("Hp", AdditionalHp);
+        PlayerPrefs.SetInt("gunLevel", GunLevel);
+        //  PlayerPrefs.SetInt("magAmmo",   magAmmo);
+        //PlayerPrefs.SetInt("ammoRemain", gun.ammoRemain);
+        PlayerPrefs.SetInt("money", Money);
+        PlayerPrefs.SetInt("stage", MaxStage);
+        // PlayerPrefs.SetInt("grenade", grenade);
+        PlayerPrefs.SetInt("grenade", Grenade);
+    }
+
+    public void LoadInfo()
+    {
+        if (PlayerPrefs.HasKey("Hp"))
+        {
+            _additionalHp = PlayerPrefs.GetInt("Hp");
+            _money = PlayerPrefs.GetInt("money");
+            _maxStage = PlayerPrefs.GetInt("stage");
+            _gunLevel = PlayerPrefs.GetInt("gunLevel");
+            _grenade = PlayerPrefs.GetInt("grenade");
+
+            // hp = PlayerPrefs.GetInt("Hp");
+            //gun.ammoRemain = PlayerPrefs.GetInt("ammoRemain");
+            // money = PlayerPrefs.GetInt("money");
+            // grenade = PlayerPrefs.GetInt("grenade");
+        }
     }
 
     // public ItemData selected;
@@ -221,8 +244,9 @@ public class MainGame : MonoBehaviour
             gunText.text = "Gun Level : " + _gunLevel.ToString();
             hpText.text = "Additional Hp : " + _additionalHp.ToString();
             grenadeText.text = "Grenade : " + playerInfo.grenade.ToString();
+            moneyText.text = Money.ToString();
         }
-        
+
         if (currScene == Scene.Playing) // if (game end)
         {
             // 임시 코드 -> 게임 상태 확인해서 플레이어 승리 or 패배 세팅
@@ -240,10 +264,6 @@ public class MainGame : MonoBehaviour
                 sceneManager.Push((GameScene)rs);
             }
         }
-
-        
-
-       
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -278,8 +298,6 @@ public class MainGame : MonoBehaviour
                 SpendMoney(100);
             }
         }
-
-
 
         sceneManager.SceneUpdate();
     }

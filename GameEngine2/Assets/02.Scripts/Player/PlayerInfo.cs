@@ -57,9 +57,9 @@ public class PlayerInfo : MonoBehaviour, IDamageable
             int maxStage = PlayerPrefs.GetInt("stage");
             int gunLevel = PlayerPrefs.GetInt("gunLevel");
             
-            mainGame.LoadInfo(money, maxStage, gunLevel, maxStage);
-            gun.magAmmo = PlayerPrefs.GetInt("magAmmo");
-            grenade = PlayerPrefs.GetInt("grenade");
+            // mainGame.LoadInfo(money, maxStage, gunLevel, maxStage);
+            // gun.magAmmo = PlayerPrefs.GetInt("magAmmo");
+            // grenade = PlayerPrefs.GetInt("grenade");
 
             // hp = PlayerPrefs.GetInt("Hp");
             //gun.ammoRemain = PlayerPrefs.GetInt("ammoRemain");
