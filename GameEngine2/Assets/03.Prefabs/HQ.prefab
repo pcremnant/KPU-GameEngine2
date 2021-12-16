@@ -48,7 +48,7 @@ MonoBehaviour:
   maxHp: 100
   curHp: 100
   HpBar: {fileID: 1403020836253947735}
-  enemy: {fileID: 438387858382776174, guid: 09a0a3ad2c1c3be48b8b87dac0057a5c, type: 3}
+  enemy: {fileID: 8729686531165819476, guid: 3c2f1a6d3a3b16d4e8997bf66d922197, type: 3}
   distance: 3
 --- !u!1001 &3774208112343057570
 PrefabInstance:

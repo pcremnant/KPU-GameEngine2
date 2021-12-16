@@ -7,10 +7,12 @@ using UnityEngine.Serialization;
 public class EnemyAI : MonoBehaviour
 {
     private EnemyCollide Enemy;
+    private Spawner dest;
     [SerializeField] private NavMeshAgent navMeshAgent;
     
-    private GameObject targetPlayer;
-    [SerializeField] private Transform destination;
+    //private GameObject targetPlayer;
+    
+    //[SerializeField] private Transform destination;
     [SerializeField] private float distance;
     
     // Start is called before the first frame update
@@ -18,9 +20,7 @@ public class EnemyAI : MonoBehaviour
     {
         Enemy = GetComponent<EnemyCollide>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        distance = 7.0f;
-
-        targetPlayer = GameObject.Find("Player");
+        //distance = 7.0f;
     }
 
     // Update is called once per frame
@@ -33,9 +33,9 @@ public class EnemyAI : MonoBehaviour
 
         if (Alive())
         {
-            navMeshAgent.SetDestination(destination.transform.position);
-            if (GetDistance())
-                navMeshAgent.SetDestination(targetPlayer.transform.position);
+            navMeshAgent.SetDestination(dest.destination.transform.position);
+            //if (GetDistance())
+                //navMeshAgent.SetDestination(targetPlayer.transform.position);
         }
         else
         {
@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour
         return Enemy.curHp > 0;
     }
 
-    public bool GetDistance()
+    /*public bool GetDistance()
     {
         if (Vector3.Distance(targetPlayer.transform.position, gameObject.transform.position) < distance)
         {
@@ -60,5 +60,5 @@ public class EnemyAI : MonoBehaviour
         {
             return false;
         }
-    }
+    }*/
 }
