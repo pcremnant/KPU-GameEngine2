@@ -259,7 +259,7 @@ public class MainGame : MonoBehaviour
                 TutorialMgr.curScore = 0;
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha4))
+            if (Input.GetKeyDown(KeyCode.Alpha4) || GameObject.Find("Player").GetComponent<PlayerInfo>().hp <= 0)
             {
                 ResultScene rs = (ResultScene)GetScene(Scene.Result);
                 rs.SetPlayerWin(false);

@@ -104,6 +104,7 @@ public class Spawner : MonoBehaviour, IDamageable
         {
             gamePlayingScene.DestroyEnemies();
             gameObject.SetActive(false);
+            
         }
         
         return false;
