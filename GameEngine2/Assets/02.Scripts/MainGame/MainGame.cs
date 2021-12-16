@@ -26,7 +26,7 @@ public class MainGame : MonoBehaviour
     private int _additionalHp = 0;
     public TMP_Text hpText;
 
-    PlayerInfo playerInfo;
+    public PlayerInfo playerInfo;
     public TMP_Text grenadeText;
 
 
