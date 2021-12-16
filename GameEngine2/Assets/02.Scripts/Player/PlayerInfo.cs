@@ -14,6 +14,7 @@ public class PlayerInfo : MonoBehaviour, IDamageable
     public int money = 0;
     public int grenade = 5;
 
+    public static int destroySpanwerCnt = 0;
 
     void Awake()
     {

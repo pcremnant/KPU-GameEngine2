@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour, IDamageable
         SpawnerOn = true;
         HpBar.rectTransform.localScale = new Vector3(1f, 1f, 1f);
         curHp = maxHp;
-
+        PlayerInfo.destroySpanwerCnt = 0;
     }    // Start is called before the first frame update
     void Awake()
     {
@@ -104,7 +104,7 @@ public class Spawner : MonoBehaviour, IDamageable
         {
             gamePlayingScene.DestroyEnemies();
             gameObject.SetActive(false);
-            
+            PlayerInfo.destroySpanwerCnt += 1;
         }
         
         return false;

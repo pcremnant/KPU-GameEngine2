@@ -251,7 +251,9 @@ public class MainGame : MonoBehaviour
         if (currScene == Scene.Playing) // if (game end)
         {
             // 임시 코드 -> 게임 상태 확인해서 플레이어 승리 or 패배 세팅
-            if (Input.GetKeyDown(KeyCode.Alpha3) || TutorialMgr.curScore == 10)
+            if (Input.GetKeyDown(KeyCode.Alpha3) || TutorialMgr.curScore == 10
+                                                 || PlayerInfo.destroySpanwerCnt >= GameObject.Find("Stage2").GetComponent<Stage>().enemySpawner.Count 
+                                                 || PlayerInfo.destroySpanwerCnt >= GameObject.Find("Stage3").GetComponent<Stage>().enemySpawner.Count)
             {
                 ResultScene rs = (ResultScene)GetScene(Scene.Result);
                 rs.SetPlayerWin(true);
