@@ -102,6 +102,8 @@ public class Gun : MonoBehaviour
     // 실제 발사 처리
     private void Shot(Vector3 startPoint, Vector3 direction)
     {
+       SoundMgr.instance.SFXPlay("Shot", SoundMgr.instance.effectClip[0]);
+
         // 레이캐스트에 의한 충돌 정보를 저장하는 컨테이너
         RaycastHit hit;
         var hitPosition = Vector3.zero;
@@ -182,7 +184,7 @@ public class Gun : MonoBehaviour
         if (ammoRemain < ammoToFill) ammoToFill = ammoRemain;
 
         magAmmo += ammoToFill;
-        ammoRemain -= ammoToFill;
+        //ammoRemain -= ammoToFill;
 
         state = State.Ready;
     }

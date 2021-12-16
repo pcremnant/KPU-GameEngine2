@@ -38,9 +38,9 @@ public class PlayerInfo : MonoBehaviour, IDamageable
     {
         PlayerPrefs.SetInt("Hp", hp);
         PlayerPrefs.SetInt("magAmmo", gun.magAmmo);
-        PlayerPrefs.SetInt("ammoRemain", gun.ammoRemain);
+        //PlayerPrefs.SetInt("ammoRemain", gun.ammoRemain);
         PlayerPrefs.SetInt("money", money);
-        PlayerPrefs.SetInt("grenade", money);
+        PlayerPrefs.SetInt("grenade", grenade);
 
     }
 
@@ -50,7 +50,7 @@ public class PlayerInfo : MonoBehaviour, IDamageable
         {
             hp = PlayerPrefs.GetInt("Hp");
             gun.magAmmo = PlayerPrefs.GetInt("magAmmo");
-            gun.ammoRemain = PlayerPrefs.GetInt("ammoRemain");
+            //gun.ammoRemain = PlayerPrefs.GetInt("ammoRemain");
             money = PlayerPrefs.GetInt("money");
             grenade = PlayerPrefs.GetInt("grenade");
         }
