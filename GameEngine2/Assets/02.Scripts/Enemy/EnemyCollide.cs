@@ -113,9 +113,11 @@ public class EnemyCollide : MonoBehaviour, IDamageable
         return false;
     }
 
-    public void SpawnerDestroyed()
+    public void SetDead()
     {
+        curHp = 0;
         animator.SetBool("Death", true);
         enemyDeath = true;
+        enemyHit = true;
     }
 }

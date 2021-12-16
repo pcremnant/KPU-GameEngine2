@@ -24,16 +24,14 @@ public class Spawner : MonoBehaviour, IDamageable
     public Transform destination;
     public GamePlayingScene gamePlayingScene;
 
-    public void Init()
+public void Init()
     {
         currentWaveIndex = -1;
         SpawnerOn = true;
         HpBar.rectTransform.localScale = new Vector3(1f, 1f, 1f);
         curHp = maxHp;
 
-    }
-
-    // Start is called before the first frame update
+    }    // Start is called before the first frame update
     void Awake()
     {
         SpawnerOn = false;
@@ -84,6 +82,8 @@ public class Spawner : MonoBehaviour, IDamageable
                 new Vector3(transform.position.x + 1, transform.position.y, transform.position.z + 1),
                 Quaternion.identity);
             
+            clone.GetComponent<EnemyAI>().destination = transformHQ;
+
             enemyList.Append(clone);
 
             enemySpawnCount++;

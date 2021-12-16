@@ -7,35 +7,43 @@ using UnityEngine.Serialization;
 public class EnemyAI : MonoBehaviour
 {
     private EnemyCollide Enemy;
-    private Spawner dest;
     [SerializeField] private NavMeshAgent navMeshAgent;
     
-    //private GameObject targetPlayer;
-    
-    //[SerializeField] private Transform destination;
+    private GameObject targetPlayer;
+    [SerializeField] public Transform destination;
     [SerializeField] private float distance;
+
     
     // Start is called before the first frame update
     private void Awake()
     {
         Enemy = GetComponent<EnemyCollide>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        //distance = 7.0f;
+        distance = 7.0f;
+
+        targetPlayer = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("AI:" + Enemy.curHp);
+        //Debug.Log("AI:" + Enemy.curHp);
         
         //else if(EnemyCollide.enemyHit)
         //   navMeshAgent.destination = gameObject.transform.position;
 
         if (Alive())
         {
-            navMeshAgent.SetDestination(GameObject.Find("Spawner1").GetComponent<Spawner>().destination.position);
+            Debug.Log(destination.transform.position);
+            navMeshAgent.SetDestination(destination.transform.position);
             //if (GetDistance())
-                //navMeshAgent.SetDestination(targetPlayer.transform.position);
+            //    navMeshAgent.SetDestination(targetPlayer.transform.position);
+            if(Vector3.Distance(transform.position, destination.transform.position) <= 3.0f)
+            {
+                Enemy.SetDead();
+
+                PlayerInfo.Instance.SetDamage(5);
+            }
         }
         else
         {
@@ -49,7 +57,7 @@ public class EnemyAI : MonoBehaviour
         return Enemy.curHp > 0;
     }
 
-    /*public bool GetDistance()
+    public bool GetDistance()
     {
         if (Vector3.Distance(targetPlayer.transform.position, gameObject.transform.position) < distance)
         {
@@ -60,5 +68,5 @@ public class EnemyAI : MonoBehaviour
         {
             return false;
         }
-    }*/
+    }
 }
