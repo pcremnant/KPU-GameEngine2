@@ -24,6 +24,8 @@ public class Spawner : MonoBehaviour, IDamageable
     public Transform destination;
     public GamePlayingScene gamePlayingScene;
 
+    public Transform transformHQ;
+
 public void Init()
     {
         currentWaveIndex = -1;

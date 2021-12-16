@@ -77,7 +77,7 @@ public class GamePlayingScene : GameScene
         {
             var enemyCol = enemy.GetComponent<EnemyCollide>();
             enemyCol.curHp = 0;
-            enemyCol.SpawnerDestroyed();
+            enemyCol.SetDead();
            
             // Destroy(enemy.gameObject);
         }
