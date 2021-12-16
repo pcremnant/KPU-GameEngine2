@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour, IDamageable
 
     public Transform transformHQ;
 
-public void Init()
+    public void Init()
     {
         currentWaveIndex = -1;
         SpawnerOn = true;
