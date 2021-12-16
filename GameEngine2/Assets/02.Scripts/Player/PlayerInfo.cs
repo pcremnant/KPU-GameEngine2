@@ -6,6 +6,7 @@ public class PlayerInfo : MonoBehaviour, IDamageable
 {
     private static PlayerInfo instance;
     public static PlayerInfo Instance => instance;
+    public MainGame mainGame;
 
     public Gun gun;
     public int hp = 100;
@@ -36,10 +37,12 @@ public class PlayerInfo : MonoBehaviour, IDamageable
 
     public void SaveInfo()
     {
-        PlayerPrefs.SetInt("Hp", hp);
+        PlayerPrefs.SetInt("Hp", mainGame.AdditionalHp);
+        PlayerPrefs.SetInt("gunLevel", mainGame.GunLevel);
         PlayerPrefs.SetInt("magAmmo", gun.magAmmo);
         //PlayerPrefs.SetInt("ammoRemain", gun.ammoRemain);
-        PlayerPrefs.SetInt("money", money);
+        PlayerPrefs.SetInt("money", mainGame.Money);
+        PlayerPrefs.SetInt("stage", mainGame.MaxStage);
         PlayerPrefs.SetInt("grenade", grenade);
 
     }
@@ -48,11 +51,16 @@ public class PlayerInfo : MonoBehaviour, IDamageable
     {
         if (PlayerPrefs.HasKey("Hp"))
         {
-            hp = PlayerPrefs.GetInt("Hp");
+            int addHp = PlayerPrefs.GetInt("Hp");
+            int money = PlayerPrefs.GetInt("money");
+            int maxStage = PlayerPrefs.GetInt("stage");
+            int gunLevel = PlayerPrefs.GetInt("gunLevel");
+            mainGame.LoadInfo(money, maxStage, gunLevel, maxStage);
             gun.magAmmo = PlayerPrefs.GetInt("magAmmo");
+            // hp = PlayerPrefs.GetInt("Hp");
             //gun.ammoRemain = PlayerPrefs.GetInt("ammoRemain");
-            money = PlayerPrefs.GetInt("money");
-            grenade = PlayerPrefs.GetInt("grenade");
+            // money = PlayerPrefs.GetInt("money");
+            // grenade = PlayerPrefs.GetInt("grenade");
         }
     }
 }
