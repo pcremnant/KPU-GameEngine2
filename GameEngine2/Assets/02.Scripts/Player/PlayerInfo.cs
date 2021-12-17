@@ -29,19 +29,31 @@ public class PlayerInfo : MonoBehaviour, IDamageable
 
     public bool ApplyDamage(DamageMessage damageMessage)
     {
-        hp -= (int)damageMessage.amount;
         if (hp < 0)
+        {
             hp = 0;
+            mainGame.SetAdditionalHp((int)damageMessage.amount);
+        }
+        else
+        {
+            hp -= (int)damageMessage.amount;
+
+        }
         return true;
     }
 
     public void SetDamage(int damage)
     {
-        
-        hp -= damage;
         if (hp < 0)
+        {
             hp = 0;
-
+            mainGame.SetAdditionalHp(damage);
+            //mainGame.AdditionalHp -= damage;
+        }
+        else
+        {
+            hp -= damage;
+        }
     }
 
 

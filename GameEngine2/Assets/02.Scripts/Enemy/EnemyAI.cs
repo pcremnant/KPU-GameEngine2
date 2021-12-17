@@ -34,7 +34,7 @@ public class EnemyAI : MonoBehaviour
 
         if (Alive())
         {
-            Debug.Log(destination.transform.position);
+            //Debug.Log(destination.transform.position);
             navMeshAgent.SetDestination(destination.transform.position);
             //if (GetDistance())
             //    navMeshAgent.SetDestination(targetPlayer.transform.position);
@@ -61,7 +61,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (Vector3.Distance(targetPlayer.transform.position, gameObject.transform.position) < distance)
         {
-            Debug.Log("Close!!!");
+            //Debug.Log("Close!!!");
             return true;
         }
         else

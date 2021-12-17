@@ -36,6 +36,13 @@ public class MainGame : MonoBehaviour
     public Stage stage2;
     public Stage stage3;
     
+    public void SetAdditionalHp(int damage)
+    {
+        _additionalHp -= damage;
+        if (_additionalHp < 0)
+            _additionalHp = 0;
+    }
+
     public void SaveInfo()
     {
         PlayerPrefs.SetInt("Hp", AdditionalHp);

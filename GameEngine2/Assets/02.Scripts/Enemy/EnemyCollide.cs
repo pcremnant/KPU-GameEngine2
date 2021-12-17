@@ -99,7 +99,7 @@ public class EnemyCollide : MonoBehaviour, IDamageable
     public bool ApplyDamage(DamageMessage damageMessage)
     {
         curHp -= (int)damageMessage.amount;
-        Debug.Log("Attacked!!!: " + curHp);
+        //Debug.Log("Attacked!!!: " + curHp);
         
         if (curHp <= 0)
         {

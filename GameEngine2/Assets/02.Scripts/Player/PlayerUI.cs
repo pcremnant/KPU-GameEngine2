@@ -19,7 +19,7 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         //HpText.text = "Hp: " + playerHp.hp.ToString();
-        HpText.text = "Hp: " + PlayerInfo.Instance.hp.ToString();
+        HpText.text = "Hp: " + (PlayerInfo.Instance.hp + PlayerInfo.Instance.mainGame.AdditionalHp).ToString();
         AmmoText.text = "Ammo:" + PlayerInfo.Instance.gun.magAmmo.ToString();
         GrenadeText.text = "Grenade: " + PlayerInfo.Instance.grenade.ToString();
     }

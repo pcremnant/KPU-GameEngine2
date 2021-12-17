@@ -28,7 +28,7 @@ public class HQ_HP : MonoBehaviour
         if (GetDistanceHQ())
         {
             curHp -= 10;
-            Debug.Log(curHp);
+            //Debug.Log(curHp);
         }
     }
     
@@ -36,7 +36,7 @@ public class HQ_HP : MonoBehaviour
     {
         if (Vector3.Distance(enemy.transform.position, gameObject.transform.position) < distance)
         {
-            Debug.Log("HQ Close!!!");
+            //Debug.Log("HQ Close!!!");
             return true;
         }
         else
